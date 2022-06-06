@@ -11,10 +11,12 @@ import '../css/General.css';
 
 function App() {
   return (
+    <BrowserRouter>
     <Routes>
-          <Route path="/overview" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="*" element={<Navigate to="/" />} />
-    </Routes>          
+    </Routes>
+    </BrowserRouter>    
   );
 }
 
