@@ -1,10 +1,10 @@
+//imports
+import { useState, useEffect, useLayoutEffect } from 'react';
+
 
 /*
   Custom hook for getting real time window sizes
 */
-
-
-import { useState, useEffect, useLayoutEffect } from 'react';
 
 
 export function useWindowSize() {
@@ -17,5 +17,5 @@ export function useWindowSize() {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
-  return size;
+  return {w: size[0], h: size[1]};
 }
