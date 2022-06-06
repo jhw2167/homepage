@@ -1,9 +1,9 @@
 /* General Styling for components that appear in various pages */
 
 :root {
-    --primary-col: white;
+    --primary-col: black;
         --primary-col-trans: rgba(255, 80, 10, 0.3);
-    --secondary-col: black;
+    --secondary-col: white;
     --tert-col: grey;
 
     --prim-font-col: rgb(255, 255, 255);
@@ -24,6 +24,7 @@ body {
     font-family: "Times New Roman", Times, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
   }
   
   code {
@@ -33,11 +34,18 @@ body {
   
 
 /* Most General Styling */
-html, body, .container-table, div#root{
-    height: 100%;
+.container-fluid {
+    background-color: var(--primary-col);
+    color: var(--prim-font-col);
+    height: 100vh;
 }
 
 /* header footer div */
+.header-row {
+    margin-top: 3%;
+    border-bottom: 4px var(--secondary-col) solid;
+}
+
 
 
 /* END HEADER SPECS */

@@ -4,6 +4,10 @@
 
 export const axios = require('axios').default;
 
+//GENERLA CONSTANTS
+export const MOBILE_WIDTH = 712;
+
+/* # # # # # */
 
 /* Interfaces */
 export interface Dims2D {
@@ -11,9 +15,13 @@ export interface Dims2D {
     w: number,
 }
 
+/* # # # # # */
+
 //Data Structure Constants
 
 
+
+/* # # # # # */
 
 /* COLORS */
     export const PRIM_COLOR = 'rgb(255, 80, 10)';

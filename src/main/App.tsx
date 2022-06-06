@@ -6,7 +6,15 @@ import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-ro
 import Homepage from './pages/Homepage';
 
 //Project CSS Imports
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import '../css/General.css';
+
+  //Components
+
+  //Pages
+  import '../css/pages/homepage.css';
+
 
 
 function App() {

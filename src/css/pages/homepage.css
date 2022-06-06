@@ -1,14 +1,62 @@
 /* Styling for major components on homepage of app */
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Special+Elite&display=swap');
 
 /* Page Structure */
 
+.center-col {
+    text-align: center;
+}
 
 
 /* # # # # # */
 
 
 /* Page Title */
+.hh-header-row {
+    min-height: 10vh;
+    border-bottom: 4px var(--secondary-col) solid;
+
+    padding-bottom: 30px;
+}
+
+.header-col {
+    text-align: left;
+}
+
+.name-title-wrapper {
+    height: 100%; 
+}
+
+.name-title {
+    /* font-family: 'Roboto Slab', serif; */
+    font-family: 'Special Elite', cursive;
+    font-size: 4.5em;
+    letter-spacing: 0.1em;
+
+    -webkit-transform: scale(1, 1.25);
+    -moz-transform: scale(1, 1.25);
+    -o-transform: scale(1, 1.25);
+
+    position: relative;
+    top: 30px;
+}
+
+.quote-wrapper {
+    text-align: center;
+    font-family: Calibri, 'Trebuchet MS', sans-serif
+}
+
+.header-quote {
+    font-style: italic;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.header-quote-attrib {
+    font-size: 2em;
+    font-weight: 700;
+}
+
 
 
 
