@@ -1,25 +1,20 @@
+//React Imports
 import React from 'react';
-import logo from '../resources/logo.svg';
-import '../css/App.css';
+import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-router-dom";
+
+//Project Imports
+import Homepage from './pages/Homepage';
+
+//Project CSS Imports
+import '../css/General.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+          <Route path="/overview" element={<Homepage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+    </Routes>          
   );
 }
 

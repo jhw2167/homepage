@@ -1,0 +1,88 @@
+/* General Styling for components that appear in various pages */
+
+:root {
+    --primary-col: white;
+        --primary-col-trans: rgba(255, 80, 10, 0.3);
+    --secondary-col: black;
+    --tert-col: grey;
+
+    --prim-font-col: rgb(255, 255, 255);
+    --sec-font-col: var(--primary-col);
+
+    --trans-grey: rgba(196, 196, 196, 0.2);
+    --very-trans-grey: rgba(196, 196, 196, 0.8);
+    --med-grey: rgba(48,48,48);
+    --heavy-grey: rgba(18,18,18);
+    --very-heavy-grey: rgba(6,6,6);
+
+    --error-red: red;
+    --check-green: rgb(11, 211, 11);
+}
+
+/* Index Styling */
+body {
+    font-family: "Times New Roman", Times, serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+
+/* Most General Styling */
+html, body, .container-table, div#root{
+    height: 100%;
+}
+
+/* header footer div */
+
+
+/* END HEADER SPECS */
+
+
+/* Main Center div, by id */
+
+
+
+/* Hyperlink Buttons */
+
+
+/* Utility */
+
+.no-padding {
+    padding: 0;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
+.no-internal-padding > * {
+    padding: 0 !important;
+}
+
+.fit-content {
+    width: fit-content !important;
+}
+
+.no-flex {
+    flex: 0 0 !important;
+}
+
+.no-internal-flex > * {
+    flex: 0 0 !important;
+}
+
+
+/*
+    LIST OF Z-indices
+
+    TOP: 1000
+    DropDown Base: 800
+
+
+    pt-fixed rolling divs: -100
+*/
