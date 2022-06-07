@@ -11,13 +11,13 @@ interface HeaderQuote {
     a?: string
 }
 
-function Header(props?: HeaderQuote)  {
+function Header(props: HeaderQuote)  {
 
 
     //NARROW COMPENT NameTitle
     const NameTitle = () => {
         return (
-            <div className="name-title-wrapper">
+            <div className="row name-title-wrapper">
                 <h1 className="name-title">
                     JACK HENRY WELSH
                 </h1>
@@ -27,7 +27,7 @@ function Header(props?: HeaderQuote)  {
 
     
     //NARROW COMPENT NameTitle
-    let quote: HeaderQuote = (props) ? props : {q: Q, a: A};
+    let quote: HeaderQuote = (Object.keys(props).length!==0) ? props : {q: Q, a: A};
     const Quote = () => {
         return (
             <div className="quote-wrapper">
@@ -43,19 +43,15 @@ function Header(props?: HeaderQuote)  {
 
 
     return (
-        <div className="col g-0">
-            <div className="row g-0">
-
-                <div className="col-8 g-0 header-col">
+        <>
+            <div className="col-8 g-0 header-col">
                     {NameTitle()}
-                </div>
-                    
-                <div className="col-4 g-0 header-col">
-                    {Quote()}
-                </div>
-
             </div>
-        </div> 
+                
+            <div className="col-4 g-0 header-col">
+                {Quote()}
+            </div>
+        </>
     ); {/* END WRAPPER COL */}
 
 }

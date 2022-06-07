@@ -16,29 +16,34 @@
     min-height: 10vh;
     border-bottom: 4px var(--secondary-col) solid;
 
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .header-col {
     text-align: left;
+    position: relative;
+    bottom: 0;
 }
 
 .name-title-wrapper {
-    height: 100%; 
+    position: absolute;
+    bottom: 0px;    
 }
 
 .name-title {
     /* font-family: 'Roboto Slab', serif; */
     font-family: 'Special Elite', cursive;
-    font-size: 4.5em;
+    font-size: 4em;
     letter-spacing: 0.1em;
 
     -webkit-transform: scale(1, 1.25);
     -moz-transform: scale(1, 1.25);
     -o-transform: scale(1, 1.25);
 
-    position: relative;
-    top: 30px;
+    margin-bottom: 0;
+    line-height: 1;
+
+    vertical-align: text-bottom;
 }
 
 .quote-wrapper {
@@ -53,8 +58,8 @@
 }
 
 .header-quote-attrib {
-    font-size: 2em;
-    font-weight: 700;
+    font-size: 1.5em;
+    font-weight: 600;
 }
 
 
