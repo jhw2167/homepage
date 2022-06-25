@@ -15,6 +15,15 @@ export interface Dims2D {
     w: number,
 }
 
+export interface ModuleProps {
+    size: Dims2D;
+    title: string;
+    image: string;
+    link: string;
+
+    PAGE_PREFIX: string;
+  }
+
 /* # # # # # */
 
 //Data Structure Constants

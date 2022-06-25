@@ -4,28 +4,34 @@ import React, { useDebugValue, useEffect, useState } from "react";
 
 //Project Imports
 import * as consts from '../../resources/constants';
-import {Dims2D} from '../../resources/constants';
+import {Dims2D, ModuleProps} from '../../resources/constants';
 
 
 //misc
 
 // # # # # # #
 
-interface ModuleProps {
-  size: Dims2D;
-  image: string;
-}
+
 
 function Module(props: ModuleProps) 
 {
+  const PRE = props.PAGE_PREFIX;
 
     return (
-      <div className="container-fluid">
-          <div className="row outer-row">
-            <p> This is a normal module </p>
+      <div className={"container" + consts.addStyleClass(PRE, 'module-wrapper')}>
+          <div className={"row" + consts.addStyleClass(PRE, 'image-wrapper')}>
+            <img src={props.image} />
+          </div> 
+          {/*END IMAGE */}
+
+          <div className={"row" + consts.addStyleClass(PRE, 'title-wrapper')}>
+            <div> 
+              {props.title}
+            </div>
           </div> {/*END OUTER ROW */}
       </div> 
-    ); {/*END WRAPPER CONTAINER */}
+    ); 
+    {/*END WRAPPER CONTAINER */}
 
   }
   

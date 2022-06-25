@@ -22,6 +22,7 @@ function Homepage()
     let headerProps = {q:"", a:""};
 
     //Module Information
+    
 
     //RETURN 
     if(windowDims.w < c.MOBILE_WIDTH) 
