@@ -21,6 +21,8 @@ function Homepage()
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
 
+    //Module Information
+
     //RETURN 
     if(windowDims.w < c.MOBILE_WIDTH) 
             return <MobileHomepage/>;
