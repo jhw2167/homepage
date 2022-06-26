@@ -19,7 +19,7 @@ function Module(props: ModuleProps)
   const imageUri: string = consts.checkLocalFile(props.image, consts.MODULE_DEFAULT_IMG_PATH);
 
     return (
-      <div className={"container" + consts.addStyleClass(PRE, 'module-wrapper')}>
+      <div className={"container " + consts.addStyleClass(PRE, 'module-wrapper')}>
           <div className={"row" + consts.addStyleClass(PRE, 'image-wrapper')}>
             <img src={imageUri} />
           </div> 

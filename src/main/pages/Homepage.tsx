@@ -97,8 +97,8 @@ function Homepage()
 
 
 
-                    <div className={'row g-0 '+c.addStyleClass(PRE, 'body-row')}>
-                        <table>
+                    <div className={'row g-0 justify-content-center '+c.addStyleClass(PRE, 'body-row')}>
+                        <table className='hh-table'>
                             <tbody>
                                 {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
                                     return (<tr key={i}>{ arr.map( (val: c.ModuleProps) => {

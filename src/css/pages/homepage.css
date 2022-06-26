@@ -8,7 +8,7 @@
 }
 
 .hh-outer-row {
-    width: 85%;
+    width: 90%;
 }
 
 /* # # # # # */
@@ -51,7 +51,7 @@
 
 .quote-wrapper {
     text-align: center;
-    font-family: Calibri, 'Trebuchet MS', sans-serif
+    font-family: var(--subtitle-font);
 }
 
 .header-quote {
@@ -73,16 +73,43 @@
 
 
 /* Page Body */
+.body-row {
+    min-height: 70vh; 
+    position: relative;
+}
 
+.body-row > table {
+    max-width: 80%;
+    height: 60%;
+    position: absolute;
+    top: 13%;
 
-
+    border-collapse: separate;
+    border-spacing: 0 5em;    
+}
 
 /* # # # # # */
 
 
-
 /* Modules */
+.hh-module-wrapper {
+    max-width: 80%;
+    margin: auto;
+}
 
+.hh-image-wrapper > img {
+    border: 4px solid var(--secondary-col);
+    border-radius: 18px;
+    
+}
 
+.hh-title-wrapper {
+    font-family: var(--subtitle-font);
+    font-size: 2.2em;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    margin-top: 3%;
+}
 
 /* # # # # # */
