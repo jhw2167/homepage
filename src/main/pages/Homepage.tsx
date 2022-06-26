@@ -85,9 +85,8 @@ function Homepage()
     else
     {
     return (
-        <div className="container-fluid">
-            <div className="row outer-row g-0">
-                <div className="col-1"></div>
+        <div className="container-fluid d-flex flex-column g-0 align-items-center">
+            <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
 
 
@@ -119,8 +118,6 @@ function Homepage()
 
 
                 </div> {/* END CENTER WRAPPER COL */}
-
-                <div className="col-1"></div>
                 
             </div> {/*END OUTER ROW */}
         </div> 
