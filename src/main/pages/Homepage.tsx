@@ -15,6 +15,7 @@ import * as api from '../../resources/api';
 import { useWindowSize } from '../subcomponents/misc/WindowDims';
 import Module from '../components/Module';
 
+//Homepage constants
 const PRE = 'hh';
 const SIZES = (width: number) => {
     let lg = Math.floor(width/2000) > 0;
@@ -27,6 +28,10 @@ const SIZES = (width: number) => {
     else 
         return 'sm';
 }
+
+//Media Constants
+const BASE_IMG_PATH = "/homepage/";
+const BASE_IMG_TYPE = ".jpg";
 
 function Homepage() 
 {
@@ -41,12 +46,11 @@ function Homepage()
     const titles = ['Projects', 'Games', 'Music', 'None', 'Documents', 'Resume'];
     const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes', 'View']
 
-    const BASE_IMG_PATH = "/components/";
     const CHAR_LIMIT = 10;
     const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
         return {
             title: t,
-            image: BASE_IMG_PATH + t.toLowerCase + SIZES(windowDims.w),
+            image: BASE_IMG_PATH + t.toLowerCase +'-'+ SIZES(windowDims.w) + BASE_IMG_TYPE,
             //return a drop down option
             options:  {
                         data: dropDowns[i].split(',').map( (v) => {
@@ -97,13 +101,13 @@ function Homepage()
                     <div className={'row g-0 '+c.addStyleClass(PRE, 'body-row')}>
                         <table>
                             <tbody>
-                                { modulesToGrid(modules).map( (arr: Array<c.ModuleProps>) => {
-                                    return (<tr> { arr.map( (val: c.ModuleProps) => {
-                                            return <td> {Module(val)} </td>
-                                    })}         {/* END TCOL WRAPPER */}
-                                    </tr>); {/* END TR WRAPPER */}
-                                })} {/* END TBODY WRAPPER */}
-                            </tbody>
+                                {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
+                                    return (<tr key={i}>{ arr.map( (val: c.ModuleProps) => {
+                                            return <td key={val.title}>{Module(val)}</td>
+                                    })}{/* END TCOL WRAPPER */}
+                                    </tr>);{/* END TR WRAPPER */}
+                                })}
+                            </tbody>{/* END TBODY WRAPPER */}
                         </table>
                     </div>
                      {/* END BODY ROW */}

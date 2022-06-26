@@ -16,11 +16,12 @@ import {Dims2D, ModuleProps} from '../../resources/constants';
 function Module(props: ModuleProps) 
 {
   const PRE = props.page_prefix;
+  const imageUri: string = consts.checkLocalFile(props.image, consts.MODULE_DEFAULT_IMG_PATH);
 
     return (
       <div className={"container" + consts.addStyleClass(PRE, 'module-wrapper')}>
           <div className={"row" + consts.addStyleClass(PRE, 'image-wrapper')}>
-            <img src={props.image} />
+            <img src={imageUri} />
           </div> 
           {/*END IMAGE */}
 

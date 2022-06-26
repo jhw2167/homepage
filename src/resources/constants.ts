@@ -7,6 +7,9 @@ export const axios = require('axios').default;
 //GENERLA CONSTANTS
 export const MOBILE_WIDTH = 712;
 
+//MEDIA CONSTANTS
+export const MODULE_DEFAULT_IMG_PATH= "components/default_module.jpg";
+
 /* # # # # # */
 
 /* Interfaces */
@@ -213,3 +216,14 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
 
 /* FUNCTION CONSTANTS */
 export const avg = (arr: Array<number>) => { return arr.reduce((a, b) => a + b) / arr.length };
+
+
+/* FILE IO */
+export const checkLocalFile = (uri: string, def: string) => {
+    try {
+        require(uri);
+       } catch (err) {
+        return def;
+       }
+       return uri;
+}
