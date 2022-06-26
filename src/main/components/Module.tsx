@@ -15,7 +15,7 @@ import {Dims2D, ModuleProps} from '../../resources/constants';
 
 function Module(props: ModuleProps) 
 {
-  const PRE = props.PAGE_PREFIX;
+  const PRE = props.page_prefix;
 
     return (
       <div className={"container" + consts.addStyleClass(PRE, 'module-wrapper')}>

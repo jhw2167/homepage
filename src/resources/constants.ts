@@ -15,19 +15,37 @@ export interface Dims2D {
     w: number,
 }
 
+export interface LinkedText {
+    text: string;
+    url?: string;
+}
+
 export interface ModuleProps {
-    size: Dims2D;
+    //size: Dims2D;
     title: string;
     image: string;
-    link: string;
+    options: DropDownProps;
 
-    PAGE_PREFIX: string;
+    page_prefix: string;
   }
+
+  export interface DropDownProps {
+    data: Array<LinkedText>;
+    charLimit?: number;
+    styleClass: string
+    hovCellFunc?: Function;
+    setSelectedData?: Function; //sets data selected by DD menu to container
+    setFuncSetDDPosExternally?: Function;   //takes a "setStateFunction" that sets the state of a 
+    /* container with a setState function internally in dropDown, so the dropDownPlace state can
+    be adjusted from outside this component */
+    animCellHeight?: number;
+    cellHeight?: number;
+    afterClick?: (val: string) => void;  //sets drop down items to do something after they are clicked
+}
 
 /* # # # # # */
 
 //Data Structure Constants
-
 
 
 /* # # # # # */

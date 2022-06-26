@@ -6,6 +6,7 @@ import axios, { AxiosPromise, AxiosRequestConfig } from 'axios';
 export const CONST_VAR = "CONSTANT VARS GO HERE";
 export const DOMAIN = "http://localhost";
 export const PORT = ":8080/";
+export const FRONT_DOMAIN = DOMAIN + PORT;
 
 //Server calls
 export const SERVER_ALL_TRANSACTIONS = DOMAIN + PORT + "transactions";
