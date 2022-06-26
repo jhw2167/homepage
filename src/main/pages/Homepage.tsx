@@ -77,6 +77,21 @@ function Homepage()
         return grid;
     }
 
+    const modulesTableJSX = () => {
+        return (
+            <table className='hh-table'>
+            <tbody>
+                {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
+                    return (<tr key={i}>{ arr.map( (val: c.ModuleProps) => {
+                            return <td key={val.title}><Module {...val}/></td>
+                    })}{/* END TCOL WRAPPER */}
+                    </tr>);{/* END TR WRAPPER */}
+                })}
+            </tbody>{/* END TBODY WRAPPER */}
+        </table>
+        );
+    }
+
     /* END MODULES */
 
     //RETURN 
@@ -98,16 +113,7 @@ function Homepage()
 
 
                     <div className={'row g-0 justify-content-center '+c.addStyleClass(PRE, 'body-row')}>
-                        <table className='hh-table'>
-                            <tbody>
-                                {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
-                                    return (<tr key={i}>{ arr.map( (val: c.ModuleProps) => {
-                                            return <td key={val.title}>{Module(val)}</td>
-                                    })}{/* END TCOL WRAPPER */}
-                                    </tr>);{/* END TR WRAPPER */}
-                                })}
-                            </tbody>{/* END TBODY WRAPPER */}
-                        </table>
+                       {modulesTableJSX()}
                     </div>
                      {/* END BODY ROW */}
 

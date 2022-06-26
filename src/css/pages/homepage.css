@@ -97,6 +97,10 @@
     margin: auto;
 }
 
+.hh-module-wrapper:hover {
+    cursor: pointer;
+}
+
 .hh-image-wrapper > img {
     border: 4px solid var(--secondary-col);
     border-radius: 18px;
