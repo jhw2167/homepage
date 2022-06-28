@@ -83,15 +83,16 @@
 .body-row > table {
     width: 84%;
     margin-top: 5%;
-
+    min-height: 600px;
 }
 
-.body-row > table > tbody > tr > td {
-    height: 200px;
-    max-height: 200px;
+.body-row > table > tbody > tr:nth-child(2) > td > div {
+    top: -10%;
 }
 
-.body-row > table > tbody > tr > td {
+.body-row > table > tbody > tr > div {
+    display: table;
+    position: relative;
 }
 
 /* # # # # # */
@@ -99,11 +100,12 @@
 
 /* Modules */
 :root {
-    --hh-module-title-height: 70%;
+    --hh-module-title-height: 10%;
 }
 
 .hh-module-wrapper {
     width: 70%;
+    height: 100%;
     margin: auto;
 
     text-align: center;
