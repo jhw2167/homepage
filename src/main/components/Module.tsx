@@ -22,10 +22,8 @@ function Module(props: ModuleProps)
     //JSX for title
     const titleJSX = () => {
             return ( 
-            <div className={"row" + consts.addStyleClass(PRE, 'title-wrapper')}>
-              <div> 
+            <div className={consts.addStyleClass(PRE, 'title-wrapper')}>
                 {props.title}
-              </div>
             </div> );
     }
 
@@ -42,13 +40,12 @@ function Module(props: ModuleProps)
       onMouseEnter={()  => setHov(true)}
       onMouseLeave={()  => setHov(false)}
       >  
-          { (hov) ? titleJSX() : null }
-          <div className={"row" + consts.addStyleClass(PRE, 'image-wrapper')}>
-            <img src={imageUri} />
-          </div> 
+          {/* { (hov) ? titleJSX() : null } */}
+            <img src={imageUri} className={consts.addStyleClass(PRE, 'image-wrapper')} />
           {/*END IMAGE */}
           
-          {(hov) ? dropDownJsx() : titleJSX()}
+          {titleJSX()}
+          {dropDownJsx()}
       </div> 
     );  {/*END OUTER ROW */}
     {/*END WRAPPER CONTAINER */}

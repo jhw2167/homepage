@@ -119,21 +119,20 @@ function DropDown(props: DropDownProps ) {
         //console.log("ret nothing!!! %s: " + props.data.length, props.headers);
         return ( 
             <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div')}>
-        <div className={c.addStyleClass(props.styleClass, 'drop-down-nested-wrapper-div')}>
+      
             <table className={c.addStyleClass(props.styleClass, 'drop-down-table')}>
                     <tbody>
                         <tr className={c.addStyleClass(props.styleClass, 'dd-row') + ' empty-drop-down'}>
                              <td>No Options</td></tr>
                     </tbody>
                     </table>
-                </div>
             </div>
         )
     } else {
 
     return (
         <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div')}>
-        <div className={c.addStyleClass(props.styleClass, 'drop-down-nested-wrapper-div')}>
+
             <table className={c.addStyleClass(props.styleClass, 'drop-down-table')}>
                     <tbody>
                     {/*         Now return data row      */}
@@ -171,7 +170,6 @@ function DropDown(props: DropDownProps ) {
                     {/* END PRINT DATA */}
                     </tbody>
                 </table>
-        </div>
         </div>
     );
     } // end ELSE
