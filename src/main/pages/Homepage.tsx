@@ -79,16 +79,14 @@ function Homepage()
 
     const modulesTableJSX = () => {
         return (
-            <table className='hh-table'>
-            <tbody>
+            <div className="hh-module-grid-wrapper container">
                 {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
-                    return (<tr key={i}>{ arr.map( (val: c.ModuleProps) => {
-                            return <td key={val.title}><Module {...val}/></td>
+                    return (<div className="row g-0">{ arr.map( (val: c.ModuleProps) => {
+                            return <div className="col g-0"><Module {...val}/></div>
                     })}{/* END TCOL WRAPPER */}
-                    </tr>);{/* END TR WRAPPER */}
+                    </div>);{/* END TR WRAPPER */}
                 })}
-            </tbody>{/* END TBODY WRAPPER */}
-        </table>
+            </div>
         );
     }
 

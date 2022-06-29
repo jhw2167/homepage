@@ -39,7 +39,8 @@ body {
 .container-fluid {
     background-color: var(--primary-col);
     color: var(--prim-font-col);
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
 }
 
 /* header footer div */
