@@ -13,6 +13,19 @@
           play-state |
           name */
 
+
+  /* General */
+
+  @keyframes fade-scroll-in {
+    0% { 
+        background-color: transparent;
+    }
+    100% { 
+        background-color: var(--secondary-col);
+    }
+  }
+
+  /* Homepage Anims */
           
 @keyframes hh-dd-flip {
   0% { 
@@ -25,9 +38,6 @@
   }
 }
           
-  
-
-/* homepage (ns: hh) */
 
 @for $i from 1 to 6 {
     .hh-dd-row-anim:nth-child(#{$i}) {

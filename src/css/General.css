@@ -4,6 +4,7 @@
     --primary-col: black;
         --primary-col-trans: rgba(255, 80, 10, 0.3);
     --secondary-col: white;
+        --secondary-col-trans: rgba(255, 255, 255, 0.3);
     --tert-col: #767676;
 
     --prim-font-col: rgb(255, 255, 255);

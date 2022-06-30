@@ -26,9 +26,11 @@ export interface LinkedText {
 export interface ModuleProps {
     //size: Dims2D;
     title: string;
+    index: number;
     image: string;
     options: DropDownProps;
-
+    setModuleHovered?: (i: number) => void;
+    
     page_prefix: string;
   }
 

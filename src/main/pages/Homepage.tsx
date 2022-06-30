@@ -39,6 +39,9 @@ function Homepage()
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
 
+    /*States */
+    const [moduleHovered, setModuleHovered] = useState<number>(0);
+
     //Module Information
     const MODULE_ROWS = 2;
     const MODULE_COLS = 3;
@@ -51,6 +54,8 @@ function Homepage()
         return {
             title: t,
             image: BASE_IMG_PATH + t.toLowerCase +'-'+ SIZES(windowDims.w) + BASE_IMG_TYPE,
+            index: i,
+            setModuleHovered: setModuleHovered,
             //return a drop down option
             options:  {
                         data: dropDowns[i].split(',').map( (v) => {
@@ -98,7 +103,9 @@ function Homepage()
     else
     {
     return (
-        <div className="container-fluid d-flex flex-column g-0 align-items-center">
+        <>
+        <div className={'shadow-background' + (moduleHovered>0) ? ' ' + 'shadow-background-hovered' : ''}> </div>
+        <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
             <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
 
@@ -125,8 +132,9 @@ function Homepage()
                 
             </div> {/*END OUTER ROW */}
         </div> 
+        </>
         ); {/*END WRAPPER CONTAINER */}
-    
+        
     }//END ELSE
 
 
