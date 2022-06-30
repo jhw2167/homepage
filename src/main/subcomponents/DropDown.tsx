@@ -35,6 +35,18 @@ function DropDown(props: DropDownProps ) {
     children.item(0)?.  //inner tbody
     children.item(data.length-1)?.clientHeight as number;
     const ANIM_CELL_HEIGHT = (props.animCellHeight) ? props.animCellHeight : 0;
+    const rowStyleClassFunc = (i: number): string => {
+        const VAR: string = '${';
+        let val: string = (props.addStyleClasses?.tr) ? props.addStyleClasses?.tr : '';
+        if(!props.addStyleClasses?.tr)
+            return '';  //none provided, null string
+        else if(!val.includes(VAR))
+            return val; //not variable w/ respect to rows, return string
+        else {
+            let ind = val.indexOf(VAR);
+            return val.substring(0,  ind) + i + val.substring(ind + 4);
+        }
+    }
 
     const parentAfterClick = (props.afterClick) ? props.afterClick : (v: any) => {};
 
@@ -118,7 +130,8 @@ function DropDown(props: DropDownProps ) {
     if(!data || data.length<1) {
         //console.log("ret nothing!!! %s: " + props.data.length, props.headers);
         return ( 
-            <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div')}>
+            <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div')
+            + ' ' + props.addStyleClasses?.div}>
       
             <table className={c.addStyleClass(props.styleClass, 'drop-down-table')}>
                     <tbody>
@@ -131,10 +144,11 @@ function DropDown(props: DropDownProps ) {
     } else {
 
     return (
-        <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div')}>
+        <div ref={scrollableDivRef} className={c.addStyleClass(props.styleClass, 'drop-down-wrapper-div') 
+        + ' ' + props.addStyleClasses?.div}>
 
-            <table className={c.addStyleClass(props.styleClass, 'drop-down-table')}>
-                    <tbody>
+            <table className={c.addStyleClass(props.styleClass, 'drop-down-table') + ' ' + props.addStyleClasses?.table}>
+                    <tbody className={props.addStyleClasses?.tbody}>
                     {/*         Now return data row      */}
                     {data.map( (value: c.LinkedText, index: number) => {
                         let isHov: number = (hovCells.has(value) || hovCells.has(index)) ? 1 : 0;
@@ -145,7 +159,7 @@ function DropDown(props: DropDownProps ) {
                         value.text.slice(0, props.charLimit) + '...' : value.text;
                         
                         return <tr className= {c.addStyleClass(props.styleClass, 'dd-row')
-                        + ' ' + hovRowStyleClass} 
+                        + ' ' + hovRowStyleClass + ' ' + rowStyleClassFunc(index)} 
                         onClickCapture={ () => { window.location.href= (value.url) ?
                             value.url :  window.location.href }}
                         onClick={() => {
@@ -163,7 +177,7 @@ function DropDown(props: DropDownProps ) {
                          >
                             {/*         Now return data COLS      */}
                             <td className={c.addStyleClass(props.styleClass, 'dd-col')} >
-                            {displayVal}
+                                <div>{displayVal}</div>
                             </td>
                         </tr>
                         })}

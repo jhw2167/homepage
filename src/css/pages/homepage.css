@@ -9,7 +9,7 @@
 
 .hh-outer-row {
     width: 90%;
-    min-width: 1100px;
+    min-width: 1200px;
     max-width: 1600px;
     min-height: 800px;
 }
@@ -77,18 +77,19 @@
 
 /* Page Body */
 :root {
-    --hh-module-grid-height: 500px;
+    --hh-module-grid-height: 550px;
 }
 
 .hh-body-row {
     height: 70vh;
     min-height: 800px; 
     width: 84%;
+    min-width: 1200px;
     margin: auto;
 }
 
 .hh-module-grid-wrapper {
-    margin-top: 180px;
+    margin-top: 120px;
     height: var(--hh-module-grid-height);
 }
 
@@ -112,6 +113,7 @@
 
     text-align: center;
     position: relative;
+    font-size: var(--hh-module-font-size);
 }
 
 
@@ -124,14 +126,13 @@
     border-radius: 18px;
     
     position: absolute;
-    top: calc(var(--hh-module-font-size)*1.5);
+    top: calc(var(--hh-module-font-size)*.7);
     left: 0; right: 0;
     margin: auto;
 }
 
 .hh-title-wrapper {
     font-family: var(--subtitle-font);
-    font-size: var(--hh-module-font-size);
     font-weight: 600;
     letter-spacing: 1px;
 
@@ -143,9 +144,8 @@
 
 .hh-title-wrapper-hover {
     top: 0;
-    opacity: 0;
-    animation: fade 1.5s;
-        -webkit-animation: fade 1.5s;
+    animation: hh-fadein 1.5s;
+        -webkit-animation: hh-fadein 1.5s;
 }
 
     @keyframes hh-fadein {
@@ -161,28 +161,61 @@
     display: none;
 
     position: absolute;
-    width: 50%;
+    width: 78%;
     top: calc(var(--hh-module-font-size)*var(--hh-module-title-offset));
     left: 0; right: 0;
     margin: auto;
+    margin-top: 2%;
     
     text-align: left;
     font-family: var(--subtitle-font);
-    font-size: 1.3em;
+}
+
+.hh-dd-hover {
+    display: block;
 }
 
 .hh-drop-down-table {
     margin: auto;
-    width: 80%;
+    width: 100%;
 
     border-collapse: separate;
     border-spacing:0 5px;
 }
 
-.hh-drop-down-table > tbody > tr {
-    background-color: var(--trans-grey);
+.hh-drop-down-table > tbody > tr > td {
+    background-color: var(--tert-col);
+    font-size: 0.8em;
+    font-weight: 500;
+    white-space: nowrap;
+    word-wrap: unset;
+    overflow: none;
+
+    line-height: 1.1;
+    border: 2px var(--primary-col) solid;
+    border-radius: 4px;
+
+    text-align: center;
+}
+
+.hh-drop-down-table > tbody > tr > td > div {
+
 }
 
 
+.hh-drop-down-table > tbody > tr > td > div {
+    position: relative;
+}
+
+
+.hh-drop-down-table > tbody > tr > td > div::before {
+    content: "=";
+    position: absolute;
+    left: 6px;
+    top: -9px;
+
+    font-weight: 1000;
+    font-size: 1.5em;
+}
 
 /* # # # # # */

@@ -15,6 +15,9 @@ import '../css/General.css';
   //Pages
   import '../css/pages/homepage.css';
 
+  //Animations
+  import '../css/animations.scss';
+
 
 
 function App() {

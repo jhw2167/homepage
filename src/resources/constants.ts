@@ -35,15 +35,27 @@ export interface ModuleProps {
   export interface DropDownProps {
     data: Array<LinkedText>;
     charLimit?: number;
-    styleClass: string
+    styleClass: string                  //namespace for styles
+    addStyleClasses?: DDHtmlStructure;            //list of space seperated addtional style classes
+    inlineStyles?: Object;
     hovCellFunc?: Function;
     setSelectedData?: Function; //sets data selected by DD menu to container
     setFuncSetDDPosExternally?: Function;   //takes a "setStateFunction" that sets the state of a 
     /* container with a setState function internally in dropDown, so the dropDownPlace state can
-    be adjusted from outside this component */
+    be adjusted from outside this component e.g. const [myDDPlaceSetter, SetMyDDPlaceSetter] = useState<Function>(),
+    pass "SetMyDDPlaceSetter" to this field then use myDDPlaceSetter(somePlace) to set DDplace externally */
     animCellHeight?: number;
     cellHeight?: number;
-    afterClick?: (val: string) => void;  //sets drop down items to do something after they are clicked
+    afterClick?: (val: string) => void;  //sets drop down items to do something after they are clicked, e.g. pass
+                                        // a setState function for the selected value here
+}
+
+export interface DDHtmlStructure {
+    div?: string;
+    table?: string;
+    tbody?: string;
+    tr?: string;
+    td?: string;
 }
 
 /* # # # # # */

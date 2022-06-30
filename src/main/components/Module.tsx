@@ -1,6 +1,7 @@
 //React imports
 import React, { useDebugValue, useEffect, useState } from "react";
-
+import { clone } from "underscore";
+import * as CSS from 'csstype';
 
 //Project Imports
 import * as consts from '../../resources/constants';
@@ -12,6 +13,7 @@ import DropDown from "../subcomponents/DropDown";
 
 // # # # # # #
 
+//CSS
 
 
 function Module(props: ModuleProps) 
@@ -30,7 +32,11 @@ function Module(props: ModuleProps)
 
     //jsx for DropDown
     const dropDownJsx = () => {
-        return <DropDown {...props.options}/>;
+      let ddProps: consts.DropDownProps = clone(props.options);
+      ddProps.addStyleClasses = {};
+      ddProps.addStyleClasses.tr = PRE + '-dd-row-anim-${i}';
+      ddProps.addStyleClasses.div = (hov) ? ' ' + PRE +'-dd-hover' : '';
+        return <DropDown {...ddProps}/>;
     }
 
     //States
@@ -39,7 +45,7 @@ function Module(props: ModuleProps)
     return (
       <div className={"container " + consts.addStyleClass(PRE, 'module-wrapper')}
       onMouseEnter={()  => setHov(true)}
-      onMouseLeave={()  => setHov(false)}
+      onMouseLeave={()  => setHov(true)}
       >  
           {/* { (hov) ? titleJSX() : null } */}
             <img src={imageUri} className={consts.addStyleClass(PRE, 'image-wrapper')} />
