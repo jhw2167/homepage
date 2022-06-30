@@ -1,11 +1,44 @@
 /* Stores keyframe segments and defined animations */
 
 
+/* @keyframes name | duration | easing-function | delay */
+
+
+/* @keyframes duration | 
+          easing-function |
+          delay |
+          iteration-count |
+          direction |
+          fill-mode |
+          play-state |
+          name */
+
+          
+@keyframes hh-dd-flip {
+  0% { 
+    transform: rotateX(100deg);
+    opacity: 0; 
+  }
+  100% { 
+    transform: rotateX(0deg);
+    opacity: 1; 
+  }
+}
+          
+  
+
 /* homepage (ns: hh) */
 
-tr
-  opacity: 0
-
+@for $i from 1 to 6 {
+    .hh-dd-row-anim:nth-child(#{$i}) {
+      opacity: 0;
+      animation-name: hh-dd-flip;
+      animation-duration: 400ms;
+      animation-delay: calc((#{$i}-1)*120ms);
+      animation-fill-mode: forwards;
+    }
+    
+  }
 
 
 

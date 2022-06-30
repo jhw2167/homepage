@@ -47,7 +47,7 @@
     -o-transform: scale(1, 1.25);
 
     margin-bottom: 0;
-    line-height: 1;
+    line-height: 1.1;
 
     vertical-align: text-bottom;
 }
@@ -97,6 +97,10 @@
     min-height: calc(var(--hh-module-grid-height)/2);
 }
 
+.hh-module-grid-wrapper > .row > .col {
+    position: relative;
+}
+
 
 /* # # # # # */
 
@@ -109,6 +113,7 @@
 
 .hh-module-wrapper {
     width: 70%;
+    height: 100%;
     margin: auto;
 
     text-align: center;
@@ -180,7 +185,7 @@
     width: 100%;
 
     border-collapse: separate;
-    border-spacing:0 5px;
+    
 }
 
 .hh-drop-down-table > tbody > tr > td {
@@ -198,8 +203,8 @@
     text-align: center;
 }
 
-.hh-drop-down-table > tbody > tr > td > div {
-
+.hh-drop-down-table > tbody {
+    perspective: 1000px; /* 3D animation effect */
 }
 
 

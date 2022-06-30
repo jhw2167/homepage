@@ -34,7 +34,7 @@ function Module(props: ModuleProps)
     const dropDownJsx = () => {
       let ddProps: consts.DropDownProps = clone(props.options);
       ddProps.addStyleClasses = {};
-      ddProps.addStyleClasses.tr = PRE + '-dd-row-anim-${i}';
+      ddProps.addStyleClasses.tr = PRE + '-dd-row-anim';
       ddProps.addStyleClasses.div = (hov) ? ' ' + PRE +'-dd-hover' : '';
         return <DropDown {...ddProps}/>;
     }
@@ -45,7 +45,7 @@ function Module(props: ModuleProps)
     return (
       <div className={"container " + consts.addStyleClass(PRE, 'module-wrapper')}
       onMouseEnter={()  => setHov(true)}
-      onMouseLeave={()  => setHov(true)}
+      onMouseLeave={()  => setHov(false)}
       >  
           {/* { (hov) ? titleJSX() : null } */}
             <img src={imageUri} className={consts.addStyleClass(PRE, 'image-wrapper')} />
