@@ -21,8 +21,9 @@ function Module(props: ModuleProps)
 
     //JSX for title
     const titleJSX = () => {
+      let h = (hov) ? ' ' + PRE +'-title-wrapper-hover' : '';
             return ( 
-            <div className={consts.addStyleClass(PRE, 'title-wrapper')}>
+            <div className={consts.addStyleClass(PRE, 'title-wrapper') + h}>
                 {props.title}
             </div> );
     }

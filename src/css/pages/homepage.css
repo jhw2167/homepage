@@ -77,10 +77,8 @@
 
 /* Page Body */
 :root {
-    --hh-module-title-height: 150px;
     --hh-module-grid-height: 500px;
 }
-
 
 .hh-body-row {
     height: 70vh;
@@ -103,6 +101,10 @@
 
 
 /* Modules */
+:root {
+    --hh-module-font-size: 2.2em;
+        --hh-module-title-offset: 2.6;   /* Distance title is offset from top of div in units of -hh-title-font-size */
+}
 
 .hh-module-wrapper {
     width: 70%;
@@ -122,22 +124,34 @@
     border-radius: 18px;
     
     position: absolute;
-    top: 21%;
+    top: calc(var(--hh-module-font-size)*1.5);
     left: 0; right: 0;
     margin: auto;
 }
 
 .hh-title-wrapper {
     font-family: var(--subtitle-font);
-    font-size: 2.2em;
+    font-size: var(--hh-module-font-size);
     font-weight: 600;
     letter-spacing: 1px;
 
     position: absolute;
     left: 0; right: 0;
-    top: var(--hh-module-title-height);
+    top: calc(var(--hh-module-font-size)*var(--hh-module-title-offset));
     margin: auto;
 }
+
+.hh-title-wrapper-hover {
+    top: 0;
+    opacity: 0;
+    animation: fade 1.5s;
+        -webkit-animation: fade 1.5s;
+}
+
+    @keyframes hh-fadein {
+        0% { opacity: 0 }
+        100% { opacity: 1 }
+    }
 
 /* # # # # # */
 
@@ -148,7 +162,7 @@
 
     position: absolute;
     width: 50%;
-    top: var(--hh-module-title-height);
+    top: calc(var(--hh-module-font-size)*var(--hh-module-title-offset));
     left: 0; right: 0;
     margin: auto;
     
