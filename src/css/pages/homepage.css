@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Special+Elite&display=swap');
 
 /* Page Structure */
-
 .center-col {
     text-align: center;
 }
@@ -15,20 +14,22 @@
     height: fit-content;
 }
 
-.shadow-background {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-
-    opacity: 0;
-    background-color: black;
+#hh-spotlight {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
     pointer-events: none;
-    z-index: 10;
 }
 
-.shadow-background-hovered {
-    opacity: 0.9;
-    transition: opacity 3s;
+#hh-shadowed-box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+    background-color: var(--primary-col);
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 /* # # # # # */
@@ -130,7 +131,7 @@
 
 .hh-module-wrapper {
     width: 70%;
-    height: 100%;
+    height: 50%;
     margin: auto;
 
     text-align: center;
@@ -168,7 +169,7 @@
 .hh-title-wrapper-hover {
     top: 0;
     animation: hh-fadein 1.5s;
-        -webkit-animation: hh-fadein 1.5s;
+        -webkit-animation: hh-fadein 1s;
 }
 
     @keyframes hh-fadein {
@@ -234,7 +235,7 @@
 .hh-drop-down-table > tbody > tr > td > div::before {
     content: "=";
     position: absolute;
-    left: 6px;
+    left: 4px;
     top: -9px;
 
     font-weight: 1000;

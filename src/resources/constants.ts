@@ -2,6 +2,8 @@
 
 */
 
+import React, { Ref } from "react";
+
 export const axios = require('axios').default;
 
 //GENERLA CONSTANTS
@@ -29,7 +31,7 @@ export interface ModuleProps {
     index: number;
     image: string;
     options: DropDownProps;
-    setModuleHovered?: (i: number) => void;
+    setModuleHovered: (i: number) => void;
     
     page_prefix: string;
   }

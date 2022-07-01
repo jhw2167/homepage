@@ -40,7 +40,17 @@ function Homepage()
     let headerProps = {q:"", a:""};
 
     /*States */
-    const [moduleHovered, setModuleHovered] = useState<number>(0);
+    const [moduleHovered, setModuleHovered] = useState<number>(-1);
+
+    /* Effects */
+    const shadowedBox = document.getElementById(PRE+'-shadowed-box');
+    useEffect( () => {
+        console.log('Effect: ' + moduleHovered);
+        if(!shadowedBox) return;
+
+        let innerStyle = (moduleHovered>-1) ? 'z-index: 10' : '';
+        shadowedBox.setAttribute('style', innerStyle );
+    }, [moduleHovered])
 
     //Module Information
     const MODULE_ROWS = 2;
@@ -104,7 +114,7 @@ function Homepage()
     {
     return (
         <>
-        <div className={'shadow-background' + (moduleHovered>0) ? ' ' + 'shadow-background-hovered' : ''}> </div>
+        <div id={PRE+'-shadowed-box'}> </div>
         <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
             <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>

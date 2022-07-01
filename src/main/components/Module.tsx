@@ -20,6 +20,22 @@ function Module(props: ModuleProps)
 {
   const PRE = props.page_prefix;
   const imageUri: string = consts.checkLocalFile(props.image, consts.MODULE_DEFAULT_IMG_PATH);
+  const setModIndex = (props.setModuleHovered) ? props.setModuleHovered : (i: number) => {};
+
+  //States
+  const [hov, setHov] = useState<Boolean>(false);
+
+  //effects
+
+  useEffect( () => {
+    console.log(props.index);
+    if(hov)
+      setModIndex(props.index);
+    else
+      setModIndex(-1);
+  }, [hov])
+
+
 
     //JSX for title
     const titleJSX = () => {
@@ -31,16 +47,15 @@ function Module(props: ModuleProps)
     }
 
     //jsx for DropDown
+    const MIN_DATA_FOR_SCROLL_BAR = 4;
     const dropDownJsx = () => {
       let ddProps: consts.DropDownProps = clone(props.options);
       ddProps.addStyleClasses = {};
       ddProps.addStyleClasses.tr = PRE + '-dd-row-anim';
-      ddProps.addStyleClasses.div = (hov) ? ' ' + PRE +'-dd-hover' : '';
+      ddProps.addStyleClasses.div = (ddProps.data.length <  MIN_DATA_FOR_SCROLL_BAR ) ? ' no-scroll ' : '';
+      ddProps.addStyleClasses.div += (hov) ? ' ' + PRE +'-dd-hover' : '';
         return <DropDown {...ddProps}/>;
     }
-
-    //States
-    const [hov, setHov] = useState<Boolean>(false);
 
     return (
       <div className={"container " + consts.addStyleClass(PRE, 'module-wrapper')}
