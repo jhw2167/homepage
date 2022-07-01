@@ -45,7 +45,6 @@ function Homepage()
     /* Effects */
     const shadowedBox = document.getElementById(PRE+'-shadowed-box');
     useEffect( () => {
-        console.log('Effect: ' + moduleHovered);
         if(!shadowedBox) return;
 
         let innerStyle = (moduleHovered>-1) ? 'z-index: 10' : '';
@@ -114,8 +113,8 @@ function Homepage()
     {
     return (
         <>
-        <div id={PRE+'-shadowed-box'}> </div>
         <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
+        <div id={PRE+'-shadowed-box'}> </div>
             <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
 

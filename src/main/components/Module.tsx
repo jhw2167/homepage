@@ -28,7 +28,6 @@ function Module(props: ModuleProps)
   //effects
 
   useEffect( () => {
-    console.log(props.index);
     if(hov)
       setModIndex(props.index);
     else
