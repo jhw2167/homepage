@@ -12,10 +12,13 @@
     max-width: 1600px;
     min-height: 800px;
     height: fit-content;
+
+    margin: auto;
 }
 
 .hh-container {
     position: relative;
+    min-width: fit-content;
 }
 
 #hh-spotlight {
