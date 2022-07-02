@@ -55,8 +55,8 @@ function Homepage()
     const MODULE_ROWS = 2;
     const MODULE_COLS = 3;
 
-    const titles = ['Projects', 'Games', 'Music', 'None', 'Documents', 'Resume'];
-    const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes, M1, M2, M3', 'View']
+    const titles = ['Projects', 'Games', 'Music', 'Photos', 'Documents', 'Resume'];
+    const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes', '']
 
     const CHAR_LIMIT = 11;
     const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
@@ -67,14 +67,14 @@ function Homepage()
             setModuleHovered: setModuleHovered,
             //return a drop down option
             options:  {
-                        data: dropDowns[i].split(',').map( (v) => {
+                  data: (!dropDowns[i]) ? [] : dropDowns[i].split(',').map( (v) => {
                             return {
                                 text: v,
                                 url: api.FRONT_DOMAIN + v
                             }
                         }),
-                        charLimit: CHAR_LIMIT,
-                        styleClass: PRE
+                  charLimit: CHAR_LIMIT,
+                  styleClass: PRE
                     }, //End DropDownProps
             page_prefix: PRE
     }});

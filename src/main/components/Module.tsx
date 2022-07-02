@@ -48,12 +48,15 @@ function Module(props: ModuleProps)
     //jsx for DropDown
     const MIN_DATA_FOR_SCROLL_BAR = 4;
     const dropDownJsx = () => {
+      if(props.options.data.length==0)
+        return null;
+
       let ddProps: consts.DropDownProps = clone(props.options);
-      ddProps.addStyleClasses = {};
-      ddProps.addStyleClasses.tr = PRE + '-dd-row-anim';
-      ddProps.addStyleClasses.div = (ddProps.data.length <  MIN_DATA_FOR_SCROLL_BAR ) ? ' no-scroll ' : '';
-      ddProps.addStyleClasses.div += (hov) ? ' ' + PRE +'-dd-hover' : '';
-        return <DropDown {...ddProps}/>;
+        ddProps.addStyleClasses = {};
+        ddProps.addStyleClasses.tr = PRE + '-dd-row-anim';
+        ddProps.addStyleClasses.div = (ddProps.data.length <  MIN_DATA_FOR_SCROLL_BAR ) ? ' no-scroll ' : '';
+        ddProps.addStyleClasses.div += (hov) ? ' ' + PRE +'-dd-hover' : '';
+          return <DropDown {...ddProps}/>;
     }
 
     return (
