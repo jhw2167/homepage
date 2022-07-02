@@ -1,5 +1,5 @@
 /* Styling for major components on homepage of app */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Slab:wght@400;600&family=Special+Elite&display=swap');
 
 /* Page Structure */
 .center-col {
@@ -312,7 +312,7 @@
   .hh-dd-row:hover {
       line-height: 1.6;
       font-size: 1.1em;
-      font-weight: 900;
+      font-family: 'Open Sans';
       -webkit-text-fill-color: var(--primary-col);
   }
 
