@@ -1,7 +1,6 @@
 //React Imports
 import React, { useEffect, useState } from 'react';
 
-
 //Project Imports
 import MobileHomepage from './MobileHomepage';
 
@@ -38,6 +37,10 @@ function Homepage()
     //const [windowDims, setWindowDims] = useState<c.Dims2D>(useWindowDimensions());
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
+
+
+    //Typewriter
+    
 
     /*States */
     const [moduleHovered, setModuleHovered] = useState<number>(-1);
