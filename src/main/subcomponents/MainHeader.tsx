@@ -22,41 +22,46 @@ function Header(props: HeaderQuote)  {
     /* STATES */
                                                 // span - typwriter - full - next
     const [name, setName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
-    const [newName, setNewName] = useState<string>('');
-    const [typeSpeed, setTypeSpeed] = useState<number>(0)
+    const [nextName, setNextName] = useState<string>('');
+    const [newName, setNewName] = useState<string[]>(['','','']);
+    const [typeSpeed, setTypeSpeed] = useState<number>(200)
     const [updateSpan, setUpdateSpan] = useState<boolean>(true);
+
     /* EFFECTS */
     useEffect( () => {
         console.log("new: %s, curr: %s", newName, name[2]);
-        if(updateSpan) {
-            name[0] = updateName(newName, name[2])[0];
-        } else if(newName) {
-            let nameArr = updateName(newName, name[2]);
-            nameArr[0] = name[0]; //updateName will pick a new prefix each time, we dont
-            console.log("name arr: ");
-            console.log(nameArr);
-            setName(JSON.parse(JSON.stringify(nameArr)));       //want a new one here, so set to previous
-        }
-       
-        console.log("UPDATED: new: %s, curr: %s", newName, name[2]);
-        setTypeSpeed(name[1].length/WORD_SPEED);
-        setUpdateSpan(!updateSpan);
-        console.log(("===\n\n"));
-    }, [newName]);
+
+            if(updateSpan) {
+                let arr: Array<string> = updateName(name[2], nextName);
+                console.log("A: " + arr[2]);
+                setNewName( arr );
+                console.log("Set new name as: " + newName[2]);
+                name[0] = newName[0];
+                name[1] = newName[1];
+            } else {
+                setName(newName);
+            }
+           
+            console.log("UPDATED: new: %s, curr: %s", newName, name[2]);
+            setTypeSpeed((name[1].length/WORD_SPEED)*10000);
+            setUpdateSpan(!updateSpan);
+            console.log(("===\n\n"));
+
+    }, [nextName]);
 
     /* INTERVALS */
-    const WORD_SPEED = NAME_INTERVAL -  TYPE_DELAY;
+    const WORD_SPEED = NAME_INTERVAL - TYPE_DELAY;
     useEffect(() => {
         setInterval(() => {
             console.log("\n\n --TRIGGER-- \n\n")
-            setNewName(JSON.parse(JSON.stringify(arrayShuffle(NAMES)[0])));
+            setNextName(JSON.parse(JSON.stringify(arrayShuffle(NAMES)[0])));
         }, NAME_INTERVAL)
     }, [])
     
 
     /* Functions */
-    const updateName: Function = (updated: string, oldName: string) => {
-        console.log('Current: %s, new: %s', oldName, updated);
+    const updateName: Function = (oldName: string, updated: string): Array<string> => {
+        //console.log('Current: %s, new: %s', oldName, updated);
         
         //find all substrings the current has with new
         let subs = [''];
@@ -68,7 +73,7 @@ function Header(props: HeaderQuote)  {
         console.log(subs);
         //select randome substring
         let sub = arrayShuffle(subs)[0];
-        return Array([sub, updated.substring(sub.length), updated]);
+        return new Array<string>(sub, updated.substring(sub.length), updated);
     }
 
 
@@ -80,7 +85,7 @@ function Header(props: HeaderQuote)  {
                     <span>
                         {name[0]}
                 <Typewriter
-                    words={new Array('hi')}
+                    words={new Array(name[1])}
                     loop={0}
                     cursor
                     cursorStyle='|'
