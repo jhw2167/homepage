@@ -30,10 +30,8 @@ function Header(props: HeaderQuote)  {
     /* STATES */
                                                 // span - typwriter - full - next
     const [name, setName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
-    const [nextName, setNextName] = useState<string>('');
-    const [newName, setNewName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
     const [typeSpeed, setTypeSpeed] = useState<number>(BASE_TYPE_SPEED)
-    const [updateSpan, setUpdateSpan] = useState<boolean>(true);
+
 
     /* EFFECTS */
     
