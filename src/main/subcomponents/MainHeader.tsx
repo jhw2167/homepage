@@ -14,51 +14,29 @@ interface HeaderQuote {
 
 //Name title info
 const NAMES = ["Jack Welsh", "J. Henry", "J. Henry Welsh", "Jack Henry Welsh"];
-const NAME_INTERVAL = 5000;
-const TYPE_DELAY = 3000;
-
+const LONG_NAMES = (arr: Array<string>) => {
+    let newArr = new Array<string>();
+    for (let index = 0; index < 1000; index++) {
+        newArr.push(arrayShuffle(arr)[0]);
+    }
+    return newArr;
+}
+const NAME_INTERVAL = 50000;
+const TYPEWRITER_DELAY = 3000;
+const WORD_SPEED = NAME_INTERVAL - TYPEWRITER_DELAY;
+const BASE_TYPE_SPEED = 180;
 function Header(props: HeaderQuote)  {
 
     /* STATES */
                                                 // span - typwriter - full - next
     const [name, setName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
     const [nextName, setNextName] = useState<string>('');
-    const [newName, setNewName] = useState<string[]>(['','','']);
-    const [typeSpeed, setTypeSpeed] = useState<number>(200)
+    const [newName, setNewName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
+    const [typeSpeed, setTypeSpeed] = useState<number>(BASE_TYPE_SPEED)
     const [updateSpan, setUpdateSpan] = useState<boolean>(true);
 
     /* EFFECTS */
-    useEffect( () => {
-        console.log("new: %s, curr: %s", newName, name[2]);
-
-            if(updateSpan) {
-                let arr: Array<string> = updateName(name[2], nextName);
-                console.log("A: " + arr[2]);
-                setNewName( arr );
-                console.log("Set new name as: " + newName[2]);
-                name[0] = newName[0];
-                name[1] = newName[1];
-            } else {
-                setName(newName);
-            }
-           
-            console.log("UPDATED: new: %s, curr: %s", newName, name[2]);
-            setTypeSpeed((name[1].length/WORD_SPEED)*10000);
-            setUpdateSpan(!updateSpan);
-            console.log(("===\n\n"));
-
-    }, [nextName]);
-
-    /* INTERVALS */
-    const WORD_SPEED = NAME_INTERVAL - TYPE_DELAY;
-    useEffect(() => {
-        setInterval(() => {
-            console.log("\n\n --TRIGGER-- \n\n")
-            setNextName(JSON.parse(JSON.stringify(arrayShuffle(NAMES)[0])));
-        }, NAME_INTERVAL)
-    }, [])
     
-
     /* Functions */
     const updateName: Function = (oldName: string, updated: string): Array<string> => {
         //console.log('Current: %s, new: %s', oldName, updated);
@@ -85,14 +63,15 @@ function Header(props: HeaderQuote)  {
                     <span>
                         {name[0]}
                 <Typewriter
-                    words={new Array(name[1])}
+                    // words={new Array(name[1])}
+                    words={LONG_NAMES(NAMES)}
                     loop={0}
                     cursor
                     cursorStyle='|'
                     typeSpeed={typeSpeed}
                     deleteSpeed={typeSpeed}
-                    delaySpeed={TYPE_DELAY}
-                />
+                    delaySpeed={TYPEWRITER_DELAY}
+                    />
                 </span>
                 </h1>
             </div>
