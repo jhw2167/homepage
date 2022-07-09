@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Typewriter, useTypewriter, Cursor } from 'react-simple-typewriter'
 import arrayShuffle from "array-shuffle";
+import React from "react";
 
 //Imgs
 const Q = "Love is delicate; but at the same time it is most vital and strong. The tiny, tender wave of love rocks the boat of life";
@@ -21,36 +22,18 @@ const LONG_NAMES = (arr: Array<string>) => {
     }
     return newArr;
 }
-const NAME_INTERVAL = 50000;
+const NAME_INTERVAL = 10000;
 const TYPEWRITER_DELAY = 3000;
 const WORD_SPEED = NAME_INTERVAL - TYPEWRITER_DELAY;
 const BASE_TYPE_SPEED = 180;
 function Header(props: HeaderQuote)  {
 
     /* STATES */
-                                                // span - typwriter - full - next
-    const [name, setName] = useState<string[]>(['',NAMES[3],NAMES[3]]);
-    const [typeSpeed, setTypeSpeed] = useState<number>(BASE_TYPE_SPEED)
-
+    const [name, setName] = useState<string>(NAMES[0]);
 
     /* EFFECTS */
     
     /* Functions */
-    const updateName: Function = (oldName: string, updated: string): Array<string> => {
-        //console.log('Current: %s, new: %s', oldName, updated);
-        
-        //find all substrings the current has with new
-        let subs = [''];
-        oldName.split('').forEach((v, i) => {
-            let s = oldName.substring(0, i) + v;
-            if(updated.includes(s))
-                subs.push(s);
-        })
-        console.log(subs);
-        //select randome substring
-        let sub = arrayShuffle(subs)[0];
-        return new Array<string>(sub, updated.substring(sub.length), updated);
-    }
 
 
     //NARROW COMPENT NameTitle
@@ -59,16 +42,15 @@ function Header(props: HeaderQuote)  {
             <div className="row name-title-wrapper">
                 <h1 className="name-title">
                     <span>
-                        {name[0]}
                 <Typewriter
-                    // words={new Array(name[1])}
-                    words={LONG_NAMES(NAMES)}
-                    loop={0}
+                    words={new Array(name)}
+                    loop={1}
                     cursor
                     cursorStyle='|'
-                    typeSpeed={typeSpeed}
-                    deleteSpeed={typeSpeed}
+                    typeSpeed={BASE_TYPE_SPEED}
+                    deleteSpeed={BASE_TYPE_SPEED}
                     delaySpeed={TYPEWRITER_DELAY}
+                    onLoopDone={() => setName(arrayShuffle(NAMES)[0])}
                     />
                 </span>
                 </h1>
@@ -108,3 +90,7 @@ function Header(props: HeaderQuote)  {
 }
 
 export default Header;
+
+function updateState(arg0: {}): any {
+    throw new Error("Function not implemented.");
+}
