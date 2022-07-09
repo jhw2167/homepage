@@ -32,6 +32,9 @@ function Header(props: HeaderQuote)  {
     const [name, setName] = useState<string>(NAMES[0]);
 
     /* EFFECTS */
+    useEffect(() => {
+        setInterval(()=> { setName(arrayShuffle(NAMES)[0])}, NAME_INTERVAL)
+    })
     
     /* Functions */
 
@@ -44,13 +47,12 @@ function Header(props: HeaderQuote)  {
                     <span>
                 <Typewriter
                     words={new Array(name)}
-                    loop={1}
+                    loop={0}
                     cursor
                     cursorStyle='|'
                     typeSpeed={BASE_TYPE_SPEED}
                     deleteSpeed={BASE_TYPE_SPEED}
                     delaySpeed={TYPEWRITER_DELAY}
-                    onLoopDone={() => setName(arrayShuffle(NAMES)[0])}
                     />
                 </span>
                 </h1>
