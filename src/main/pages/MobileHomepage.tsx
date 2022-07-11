@@ -17,9 +17,15 @@ const PRE='hh';
 
 function Homepage(props: MobileHomepageProps) 
 {
+    //consts
+    const MODS_LEN=props.modules.length;
     //States
     const [moduleIdx, setModuleIdx] = useState<number>(0);
 
+    //Effects
+    useEffect(() => {
+      console.log(moduleIdx);
+    }, [moduleIdx])
 
     return (
       <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
@@ -38,13 +44,16 @@ function Homepage(props: MobileHomepageProps)
         
         {/* MOBILE BODY */}
           <div className={"row g-0 " +c.addStyleClass(PRE, 'mobile-body')}>
-            <div className='col-2 hh-mobile-arrow arrow-btn-left'>
+            <div className='col-2 hh-mobile-arrow arrow-btn-left'
+             onClick={() => setModuleIdx( (moduleIdx-1 < 0)?MODS_LEN-1:moduleIdx-1)}>
               <div className="arrow-left"></div>
             </div>
 
             <div className="col"> <Module {...props.modules[moduleIdx]}/></div>
 
-            <div className='col-2 hh-mobile-arrow arrow-btn-right'>
+            <div className='col-2 hh-mobile-arrow arrow-btn-right'
+            onClick={() => setModuleIdx( (moduleIdx+1==MODS_LEN)?0:moduleIdx+1)}
+            >
               <div className="arrow-right"></div>
             </div>
 
