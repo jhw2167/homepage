@@ -7,7 +7,7 @@ import React, { Ref } from "react";
 export const axios = require('axios').default;
 
 //GENERLA CONSTANTS
-export const MOBILE_WIDTH = 712;
+export const MOBILE_WIDTH = 860;
 
 //MEDIA CONSTANTS
 export const MODULE_DEFAULT_IMG_PATH= "components/default_module.jpg";

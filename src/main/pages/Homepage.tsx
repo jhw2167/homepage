@@ -112,7 +112,7 @@ function Homepage()
 
     //RETURN 
     if(windowDims.w < c.MOBILE_WIDTH) 
-            return <MobileHomepage/>;
+            return <MobileHomepage modules={modules}/>;
     else
     {
     return (

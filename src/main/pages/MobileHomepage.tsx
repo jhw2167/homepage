@@ -7,13 +7,23 @@ import * as api from '../../resources/api';
 import MobileHomepage from './MobileHomepage';
 import Module from '../components/Module';
 
+//Interfaces
+interface MobileHomepageProps {
+  modules: Array<c.ModuleProps>
+}
+
 //Constants
 const PRE='hh';
 
-function Homepage() 
+function Homepage(props: MobileHomepageProps) 
 {
+    //States
+    const [moduleIdx, setModuleIdx] = useState<number>(0);
+
+
     return (
       <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
+        <div id={PRE+'-shadowed-box'}> </div>
         <div className={"row g-0 " +c.addStyleClass(PRE, 'mobile-outer-row')}>
         <div className={'col g-0'}>
 
@@ -22,17 +32,28 @@ function Homepage()
                     <div>Jack</div>
                     <div>Henry</div>
                     <div>Welsh</div>
+                    <div>-----------</div>
                 </h1>
           </div>
         
-          <div className={"row g-0" +c.addStyleClass(PRE, 'mobile-body')}>
-            <p> This is a mobile homepage </p>
+        {/* MOBILE BODY */}
+          <div className={"row g-0 " +c.addStyleClass(PRE, 'mobile-body')}>
+            <div className='col-2 hh-mobile-arrow arrow-btn-left'>
+              <div className="arrow-left"></div>
+            </div>
+
+            <div className="col"> <Module {...props.modules[moduleIdx]}/></div>
+
+            <div className='col-2 hh-mobile-arrow arrow-btn-right'>
+              <div className="arrow-right"></div>
+            </div>
+
           </div>
 
           <div className={'row g-0 '+c.addStyleClass(PRE, 'mobile-footer-row')}>
             
-            </div>
-             {/* END FOOTER ROW */}
+          </div>
+          {/* END FOOTER ROW */}
 
         </div> {/*END OUTER COL */}
         </div> {/*END OUTER ROW */}
