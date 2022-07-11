@@ -2,17 +2,18 @@
 import React, { useEffect, useState } from 'react';
 
 //Project Imports
+import * as c from '../../resources/constants';
+import * as api from '../../resources/api';
 import MobileHomepage from './MobileHomepage';
+import Module from '../components/Module';
 
 //Components
 import MainHeader from '../subcomponents/MainHeader';
 
 
 //misc
-import * as c from '../../resources/constants';
-import * as api from '../../resources/api';
 import { useWindowSize } from '../subcomponents/misc/WindowDims';
-import Module from '../components/Module';
+
 
 //Homepage constants
 const PRE = 'hh';

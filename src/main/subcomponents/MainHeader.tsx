@@ -34,7 +34,7 @@ function Header(props: HeaderQuote)  {
     /* EFFECTS */
     useEffect(() => {
         setInterval(()=> { setName(arrayShuffle(NAMES)[0])}, NAME_INTERVAL)
-    })
+    }, [])
     
     /* Functions */
 
