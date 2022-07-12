@@ -22,10 +22,24 @@ function Homepage(props: MobileHomepageProps)
     const MODS_LEN=props.modules.length;
     //States
     const [moduleIdx, setModuleIdx] = useState<number>(0);
-    //const [modules, setModules] = useState<Array<JsxElement>>();
+    const [increment, incrementModules] = useState<number>(0);
+    const [slideAnim, setSlideAnim] = useState<string>('');
     const modules = props.modules;
 
     //Effects
+    useEffect( () => {
+      if(increment==0)
+        return;
+
+      if(increment<0) {
+        setModuleIdx( (moduleIdx-1<0)?MODS_LEN-1:moduleIdx-1);
+        setSlideAnim('slide-right');
+      } else {
+        setModuleIdx( (moduleIdx+1==MODS_LEN)?0:moduleIdx+1);
+        setSlideAnim('slide-left');
+      }
+      incrementModules(0);
+    }, [increment])
 
     return (
       <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
@@ -45,7 +59,7 @@ function Homepage(props: MobileHomepageProps)
         {/* MOBILE BODY */}
           <div className={"row g-0 " +c.addStyleClass(PRE, 'mobile-body')}>
             <div className='hh-mobile-arrow arrow-btn-left'
-             onClick={() => setModuleIdx( (moduleIdx-1 < 0)?MODS_LEN-1:moduleIdx-1)}>
+             onClick={() => incrementModules(-1)}>
               <div className="arrow-left"></div>
             </div>
 
@@ -53,10 +67,13 @@ function Homepage(props: MobileHomepageProps)
                 {modules.map( (m,i) => {
                   const before=(moduleIdx-1<0)?modules.length-1:moduleIdx-1,
                    after=(moduleIdx+1)%modules.length, selected=moduleIdx;
+                  
                   let styleClass = c.addStyleClass(PRE, 'slide');
                   switch(i) {
                     case before: styleClass+=' left'; break;
-                    case selected: styleClass+=' selected'; break;
+                    case selected:
+                       styleClass+= (' selected ' + slideAnim);
+                        break;
                     case after: styleClass+=' right'; break;
                   }
                   return <div className={styleClass}><Module {...m}/></div>;
@@ -64,7 +81,7 @@ function Homepage(props: MobileHomepageProps)
             </div>
 
             <div className='hh-mobile-arrow arrow-btn-right'
-            onClick={() => setModuleIdx( (moduleIdx+1==MODS_LEN)?0:moduleIdx+1)}
+            onClick={() => incrementModules(1)}
             >
               <div className="arrow-right"></div>
             </div>

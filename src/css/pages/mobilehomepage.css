@@ -94,7 +94,7 @@
 
     .hh-mobile-arrow {
         position: absolute;
-        z-index: 1;
+        z-index: 12;
         width: 100%;
     }
 
@@ -162,13 +162,30 @@
     .hh-slide.selected {
         height: 100%;
         width: 100%;
-        position: static;
 
         z-index: 11;
         pointer-events: all;
     }
 
+    .slide-left { animation: slide-left .7s; -webkit-animation: slide-left .7s; }
+    .slide-right { animation: slide-right .7s; -webkit-animation: slide-right .7s; }
+    :root { --hh-slide-offset: 250px;}
+
+        @keyframes slide-left {
+            0% {left: var(--hh-slide-offset) }
+            99% { left: calc(-1 * var(--hh-slide-offset));}
+            100% {position: static; }
+        }
+
+        @keyframes slide-right {
+            0% {left: calc(-1 * var(--hh-slide-offset)) }
+            99% { left: var(--hh-slide-offset);}
+            100% {position: static; }
+        }
+   
     .hh-slide.right {
         left: 85%;
         z-index: 0;
     }
+
+
