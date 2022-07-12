@@ -68,13 +68,13 @@ function Homepage(props: MobileHomepageProps)
                   const before=(moduleIdx-1<0)?modules.length-1:moduleIdx-1,
                    after=(moduleIdx+1)%modules.length, selected=moduleIdx;
                   
-                  let styleClass = c.addStyleClass(PRE, 'slide');
+                  let styleClass = c.addStyleClass(PRE, 'slide ');
                   switch(i) {
-                    case before: styleClass+=' left'; break;
+                    case before: styleClass+=(slideAnim+'-out'); break;
                     case selected:
-                       styleClass+= (' selected ' + slideAnim);
+                       styleClass+=(' selected '+slideAnim);
                         break;
-                    case after: styleClass+=' right'; break;
+                    case after: styleClass+=(slideAnim+'-out'); break;
                   }
                   return <div className={styleClass}><Module {...m}/></div>;
                 })}

@@ -154,10 +154,7 @@
         pointer-events: none;
     }
 
-    .hh-slide.left {
-        left: -85%;
-        z-index: 0;
-    }
+   
 
     .hh-slide.selected {
         height: 100%;
@@ -169,7 +166,9 @@
 
     .slide-left { animation: slide-left .7s; -webkit-animation: slide-left .7s; }
     .slide-right { animation: slide-right .7s; -webkit-animation: slide-right .7s; }
-    :root { --hh-slide-offset: 250px;}
+    .slide-right-out { animation: slide-right-out .7s; -webkit-animation: slide-right-out .7s; }
+    .slide-left-out { animation: slide-left-out .7s; -webkit-animation: slide-left-out .7s; }
+    :root { --hh-slide-offset: 250px; --hh-slide-offset: 400px;}
 
         @keyframes slide-left {
             0% {left: var(--hh-slide-offset) }
@@ -182,10 +181,15 @@
             99% { left: var(--hh-slide-offset);}
             100% {position: static; }
         }
-   
-    .hh-slide.right {
-        left: 85%;
-        z-index: 0;
-    }
+
+        @keyframes slide-right-out {
+            0% {left: 0; z-index: 0;}
+            100% { left: calc(var(--hh-slide-offset)); z-index: 0;}
+        }
+
+        @keyframes slide-left-out {
+            0% {left: 0; z-index: 0; }
+            100% { left: calc(-1 * var(--hh-slide-offset) * 2); z-index: 0;}
+        }
 
 
