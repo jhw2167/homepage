@@ -233,7 +233,6 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
 /* FUNCTION CONSTANTS */
 export const avg = (arr: Array<number>) => { return arr.reduce((a, b) => a + b) / arr.length };
 
-
 /* FILE IO */
 export const checkLocalFile = (uri: string, def: string) => {
     try {

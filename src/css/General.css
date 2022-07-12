@@ -88,6 +88,13 @@ body {
     flex: 0 0 !important;
 }
 
+.no-row-star > * {
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 !important;
+}
 
 /*
     LIST OF Z-indices

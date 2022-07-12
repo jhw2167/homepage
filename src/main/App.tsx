@@ -14,6 +14,7 @@ import '../css/General.css';
 
   //Pages
   import '../css/pages/homepage.css';
+  import '../css/pages/mobilehomepage.css';
 
   //Animations
   import '../css/animations.scss';
