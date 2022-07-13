@@ -164,6 +164,11 @@
         pointer-events: all;
     }
 
+    .hh-dd-hover {
+        position: relative;
+        z-index: 11;
+    }
+
     :root { --hh-slide-offset: 250px; --hh-slide-offset: 400px; --hh-slide-time: 2s;}
     .slide-left { animation: slide-left var(--hh-slide-time); -webkit-animation: slide-left var(--hh-slide-time); }
     .slide-right { animation: slide-right var(--hh-slide-time); -webkit-animation: slide-right var(--hh-slide-time); }
@@ -178,7 +183,7 @@
 
         @keyframes slide-right {
             0% {left: calc(-1 * var(--hh-slide-offset)) }
-            99% { left: var(--hh-slide-offset);}
+            99% {left: var(--hh-slide-offset);}
             100% {position: static; }
         }
 

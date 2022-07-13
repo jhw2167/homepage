@@ -60,7 +60,7 @@ function Homepage()
     const MODULE_COLS = 3;
 
     const titles = ['Projects', 'Games', 'Music', 'Photos', 'Documents', 'Resume'];
-    const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes', '']
+    const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes, M1, M2', '']
 
     const CHAR_LIMIT = 11;
     const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
