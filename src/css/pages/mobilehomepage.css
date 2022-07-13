@@ -1,20 +1,21 @@
 /* Mobile Styling */
 
-.hh-mobile-outer-row {
-    min-height: 100vh;
-    height: 100%;
-    min-width: 580px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
+.mobile.container-fluid {
+    align-items: center;
+    overflow-x: hidden;
+    min-width: 490px;
 }
 
-.hh-mobile-outer-row > .col {
-    height: 100%;
+    @media only screen and (max-width: 720px) {
+        .hh-mobile-body { width: 100%;}  
+    }
+
+.mobile.container-fluid > div {
     width: 80%;
-    max-width: 80%;
-    margin: 0 auto;
-    justify-content: center;
+}
+
+@media only screen and (max-width: 720px) {
+    .mobile.container-fluid > div { width: 90%;}  
 }
 
 .mobile-name-title-wrapper {
@@ -65,23 +66,20 @@
 /* Mobile Body + Modules */
 
     .hh-mobile-body {
-        height: 40vh;
-        width: 100%;
+        min-height: 40vh;
+        width: 90%;
+        flex-grow: 1;
 
         margin: auto;
-        margin-top: 7%;
         justify-content: center;
         position: relative;
 
         --hh-mobile-arrow-sz: 50px;
     }
 
-        /* @media only screen and (max-width: 740px) {
-            .hh-mobile-body { width: 90%;}  
-        }
         @media only screen and (max-width: 580px) {
-            .hh-mobile-body { width: 95%;}  
-        } */
+            .hh-mobile-body { width: 100%;}  
+        }
     
 
     .hh-mobile-body > div {

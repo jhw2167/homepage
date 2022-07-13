@@ -42,11 +42,8 @@ function Homepage(props: MobileHomepageProps)
     }, [increment])
 
     return (
-      <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
-        <div id={PRE+'-shadowed-box'}> </div>
-        <div className={"row " +c.addStyleClass(PRE, 'mobile-outer-row')}>
-        <div className={'col'}>
-
+      <div className="container-fluid mobile h-100 d-flex flex-column">
+        <div className="d-flex flex-column vh-100">
           <div className="row mobile-name-title-wrapper">
                 <h1 className="name-title mobile-name-title">
                     <div>Jack</div>
@@ -94,13 +91,12 @@ function Homepage(props: MobileHomepageProps)
 
           </div>
 
-          <div className={'row g-0 '+c.addStyleClass(PRE, 'mobile-footer-row')}>
+          <div className={'row '+c.addStyleClass(PRE, 'mobile-footer-row')}>
             
           </div>
           {/* END FOOTER ROW */}
 
-        </div> {/*END OUTER COL */}
-        </div> {/*END OUTER ROW */}
+        </div> {/*END WRAPPER CONTAINER */}
       </div> 
     ); {/*END WRAPPER CONTAINER */}
 
