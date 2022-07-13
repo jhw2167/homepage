@@ -164,11 +164,11 @@
         pointer-events: all;
     }
 
-    .slide-left { animation: slide-left .7s; -webkit-animation: slide-left .7s; }
-    .slide-right { animation: slide-right .7s; -webkit-animation: slide-right .7s; }
-    .slide-right-out { animation: slide-right-out .7s; -webkit-animation: slide-right-out .7s; }
-    .slide-left-out { animation: slide-left-out .7s; -webkit-animation: slide-left-out .7s; }
-    :root { --hh-slide-offset: 250px; --hh-slide-offset: 400px;}
+    :root { --hh-slide-offset: 250px; --hh-slide-offset: 400px; --hh-slide-time: 2s;}
+    .slide-left { animation: slide-left var(--hh-slide-time); -webkit-animation: slide-left var(--hh-slide-time); }
+    .slide-right { animation: slide-right var(--hh-slide-time); -webkit-animation: slide-right var(--hh-slide-time); }
+    .slide-right-out { animation: slide-right-out var(--hh-slide-time); -webkit-animation: slide-right-out var(--hh-slide-time); }
+    .slide-left-out { animation: slide-left-out var(--hh-slide-time); -webkit-animation: slide-left-out var(--hh-slide-time); }
 
         @keyframes slide-left {
             0% {left: var(--hh-slide-offset) }
@@ -184,7 +184,7 @@
 
         @keyframes slide-right-out {
             0% {left: 0; z-index: 0;}
-            100% { left: calc(var(--hh-slide-offset)); z-index: 0;}
+            100% { left: calc(var(--hh-slide-offset)*2); z-index: 0;}
         }
 
         @keyframes slide-left-out {

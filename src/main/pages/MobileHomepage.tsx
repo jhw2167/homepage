@@ -70,11 +70,17 @@ function Homepage(props: MobileHomepageProps)
                   
                   let styleClass = c.addStyleClass(PRE, 'slide ');
                   switch(i) {
-                    case before: styleClass+=(slideAnim+'-out'); break;
+                    case before: 
+                    if(slideAnim.includes('left'))
+                       styleClass+=(slideAnim+'-out'); 
+                    break;
                     case selected:
                        styleClass+=(' selected '+slideAnim);
                         break;
-                    case after: styleClass+=(slideAnim+'-out'); break;
+                    case after: 
+                      if(slideAnim.includes('right'))
+                       styleClass+=(slideAnim+'-out'); 
+                      break;
                   }
                   return <div className={styleClass}><Module {...m}/></div>;
                 })}
