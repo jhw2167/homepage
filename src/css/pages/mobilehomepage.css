@@ -3,20 +3,20 @@
 .mobile.container-fluid {
     align-items: center;
     overflow-x: hidden;
-    min-width: 490px;
+    min-width: 400px;
 }
 
     @media only screen and (max-width: 720px) {
-        .hh-mobile-body { width: 100%;}  
+        .hh-mobile-body { width: 100%; }  
     }
 
 .mobile.container-fluid > div {
     width: 80%;
 }
 
-@media only screen and (max-width: 720px) {
-    .mobile.container-fluid > div { width: 90%;}  
-}
+    @media only screen and (max-width: 720px) {
+        .mobile.container-fluid > div { width: 90%;}  
+    }
 
 .mobile-name-title-wrapper {
     min-height: 20vh;
@@ -56,12 +56,20 @@
     letter-spacing: -15px;
  }
 
- @media only screen and (max-width: 580px) {
-    .mobile-name-title > :nth-child(4) {
-        letter-spacing: -10px;
-        font-size: 0.8em;
-    }  
- }
+    @media only screen and (max-width: 580px) {
+        .mobile-name-title > :nth-child(4) {
+            letter-spacing: -10px;
+            font-size: 0.8em;
+        }  
+    }
+
+    @media only screen and (max-width: 580px) {
+        .mobile-name-title {
+            margin-top: 10%; 
+            font-size: 5.5em;
+        }  
+    }
+
 
 /* Mobile Body + Modules */
 
@@ -79,6 +87,19 @@
 
         @media only screen and (max-width: 580px) {
             .hh-mobile-body { width: 100%;}  
+        }
+
+        @media only screen and (max-width: 450px) {
+            :root {
+                --hh-module-img-w: 240px;
+                --hh-module-img-h: 136px;
+        
+                --hh-module-font-size: 2.4em;
+                    --hh-module-title-offset: 2.2;
+            }
+            .hh-mobile-body {
+                --hh-mobile-arrow-sz: 40px;
+            }
         }
     
 
@@ -106,8 +127,10 @@
         left: 0;
     }
 
-    .hh-mobile-arrow.arrow-btn-right {
-        left: calc(100% - var(--hh-mobile-arrow-sz));
+    .hh-mobile-arrow.arrow-btn-right { left: calc(100% - var(--hh-mobile-arrow-sz)); }
+    @media only screen and (max-width: 450px) {
+        .hh-mobile-arrow.arrow-btn-right { left: calc(100% - var(--hh-mobile-arrow-sz)/2); }
+        .hh-mobile-arrow.arrow-btn-left { left: calc(-1*var(--hh-mobile-arrow-sz)/2); }
     }
 
     .arrow-left {
@@ -196,4 +219,4 @@
             100% { left: calc(-1 * var(--hh-slide-offset) * 2); z-index: 0;}
         }
 
-
+/* Mobile Adjustments */
