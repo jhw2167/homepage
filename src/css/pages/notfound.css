@@ -1,0 +1,15 @@
+/* Styling for simple 404 error page */
+
+.nf-container > .row {
+    margin: auto;
+    margin-top: 10%;
+}
+
+.nf-title {     /* draws other values from homepage.css*/
+    font-size: 8em;
+}
+
+.nf-title + *, .nf-title + * + * {
+    font-size: 2.2em;
+    font-family: var(--hh-title-font);
+}

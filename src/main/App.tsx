@@ -4,6 +4,7 @@ import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-ro
 
 //Project Imports
 import Homepage from './pages/Homepage';
+import NotFound from './pages/NotFound';  
 
 //Project CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,9 +16,12 @@ import '../css/General.css';
   //Pages
   import '../css/pages/homepage.css';
   import '../css/pages/mobilehomepage.css';
+  import '../css/pages/notfound.css';
+  
 
   //Animations
   import '../css/animations.scss';
+  
 
 
 
@@ -26,7 +30,9 @@ function App() {
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<Homepage />} />
-          { /* <Route path="*" element={<Navigate to="/" />} /> */}
+
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" />} />
     </Routes>
     </BrowserRouter>    
   );

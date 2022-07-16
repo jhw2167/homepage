@@ -22,10 +22,10 @@ const LONG_NAMES = (arr: Array<string>) => {
     }
     return newArr;
 }
-const NAME_INTERVAL = 10000;
-const TYPEWRITER_DELAY = 3000;
-const WORD_SPEED = NAME_INTERVAL - TYPEWRITER_DELAY;
-const BASE_TYPE_SPEED = 180;
+    const NAME_INTERVAL = 10000;
+    const TYPEWRITER_DELAY = 3000;
+    const WORD_SPEED = NAME_INTERVAL - TYPEWRITER_DELAY;
+    const BASE_TYPE_SPEED = 180;
 function Header(props: HeaderQuote)  {
 
     /* STATES */

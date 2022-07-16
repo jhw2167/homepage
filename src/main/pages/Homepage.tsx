@@ -39,10 +39,6 @@ function Homepage()
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
 
-
-    //Typewriter
-    
-
     /*States */
     const [moduleHovered, setModuleHovered] = useState<number>(-1);
 
