@@ -12,6 +12,10 @@ export const MOBILE_WIDTH = 860;
 //MEDIA CONSTANTS
 export const MODULE_DEFAULT_IMG_PATH= "components/default_module.jpg";
 
+declare module '*.jpg';
+declare module '*.png';
+
+
 /* # # # # # */
 
 /* Interfaces */
@@ -234,10 +238,12 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
 export const avg = (arr: Array<number>) => { return arr.reduce((a, b) => a + b) / arr.length };
 
 /* FILE IO */
-export const checkLocalFile = (uri: string, def: string) => {
+export const checkLocalFile = (uri: string, def: string): string => {
+    console.log(uri);
     try {
-        require(uri);
+        return require(""+uri).default;
        } catch (err) {
+           console.log(err)
         return def;
        }
        return uri;

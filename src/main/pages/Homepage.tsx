@@ -6,6 +6,7 @@ import * as c from '../../resources/constants';
 import * as api from '../../resources/api';
 import MobileHomepage from './MobileHomepage';
 import Module from '../components/Module';
+import * as CSS from 'csstype';
 
 //Components
 import MainHeader from '../subcomponents/MainHeader';
@@ -13,7 +14,7 @@ import MainHeader from '../subcomponents/MainHeader';
 
 //misc
 import { useWindowSize } from '../subcomponents/misc/WindowDims';
-
+import { Link } from 'react-router-dom';
 
 //Homepage constants
 const PRE = 'hh';
@@ -30,14 +31,15 @@ const SIZES = (width: number) => {
 }
 
 //Media Constants
-const BASE_IMG_PATH = "/homepage/";
-const BASE_IMG_TYPE = ".jpg";
+const BASE_IMG_PATH = "../homepage/";
+const BASE_IMG_TYPE = ".png";
 
 function Homepage() 
 {
     //const [windowDims, setWindowDims] = useState<c.Dims2D>(useWindowDimensions());
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
+   
 
     /*States */
     const [moduleHovered, setModuleHovered] = useState<number>(-1);
@@ -62,12 +64,12 @@ function Homepage()
     const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
         return {
             title: t,
-            image: BASE_IMG_PATH + t.toLowerCase +'-'+ SIZES(windowDims.w) + BASE_IMG_TYPE,
+            image: BASE_IMG_PATH + t.toLowerCase() + BASE_IMG_TYPE,
             index: i,
             setModuleHovered: setModuleHovered,
             //return a drop down option
             options:  {
-                  data: (!dropDowns[i]) ? [] : dropDowns[i].split(',').map( (v) => {
+                  data: (!dropDowns[i]) ? [] : dropDowns[i].split(',').map( (v: string) => {
                             return {
                                 text: v,
                                 url: api.FRONT_DOMAIN + v
@@ -132,7 +134,7 @@ function Homepage()
                      {/* END BODY ROW */}
 
                     <div className={'row g-0 '+c.addStyleClass(PRE, 'footer-row')}>
-            
+
                     </div>
                      {/* END FOOTER ROW */}
 

@@ -19,7 +19,12 @@ import DropDown from "../subcomponents/DropDown";
 function Module(props: ModuleProps) 
 {
   const PRE = props.page_prefix;
-  const imageUri: string = consts.checkLocalFile(props.image, consts.MODULE_DEFAULT_IMG_PATH);
+  const imageUri: string = props.image;
+  const BG_IMG: CSS.Properties = {
+    ['background-image' as any]: `url(${props.image})`,
+    ['width' as any]: '100%',
+    ['height' as any]: '100%',
+  };
   const setModIndex = (props.setModuleHovered) ? props.setModuleHovered : (i: number) => {};
 
   //States
@@ -65,7 +70,9 @@ function Module(props: ModuleProps)
       onMouseLeave={()  => setHov(false)}
       >  
           {/* { (hov) ? titleJSX() : null } */}
-            <img src={imageUri} className={consts.addStyleClass(PRE, 'image-wrapper')} />
+          <div className={consts.addStyleClass(PRE, 'image-wrapper')}>
+            <div style={BG_IMG}></div>
+          </div>
           {/*END IMAGE */}
           
           {titleJSX()}

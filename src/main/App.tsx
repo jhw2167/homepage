@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
 
           <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" />} />
+          <Route path="*" element={<NotFound/>} />
     </Routes>
     </BrowserRouter>    
   );

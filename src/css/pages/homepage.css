@@ -157,13 +157,23 @@
     }
 
 .hh-module-wrapper {
-    width: 70%;
-    height:85%;
+    width: var(--hh-module-img-w);
+    height: var(--hh-module-img-h);
     margin: auto;
 
     text-align: center;
     position: relative;
     font-size: var(--hh-module-font-size);
+}
+
+.hh-image-wrapper:hover > div {
+    --hh-zoom: 1.2;
+    transform:scale(var(--hh-zoom));
+    -ms-transform:scale(var(--hh-zoom)); /* IE 9 */
+    -moz-transform:scale(var(--hh-zoom)); /* Firefox */
+    -webkit-transform:scale(var(--hh-zoom)); /* Safari and Chrome */
+    -o-transform:scale(var(--hh-zoom)); /* Opera */
+    transition: transform .7s;
 }
 
 
@@ -181,8 +191,18 @@
     
     position: absolute;
     top: calc(var(--hh-module-font-size)*.7);
+    overflow: hidden;
     left: 0; right: 0;
     margin: auto;
+}
+
+.hh-image-wrapper > div  {
+    border: 4px solid transparent;
+    border-radius: 18px;
+
+    position: relative;
+    background-size: cover;
+    z-index: 0;
 }
 
 .hh-title-wrapper {
