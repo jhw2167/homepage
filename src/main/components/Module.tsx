@@ -21,7 +21,7 @@ function Module(props: ModuleProps)
   const PRE = props.page_prefix;
   const imageUri: string = props.image;
   const BG_IMG: CSS.Properties = {
-    ['background-image' as any]: `url(${props.image})`,
+    ['backgroundImage' as any]: `url(${props.image})`,
     ['width' as any]: '100%',
     ['height' as any]: '100%',
   };
@@ -70,7 +70,8 @@ function Module(props: ModuleProps)
       onMouseLeave={()  => setHov(false)}
       >  
           {/* { (hov) ? titleJSX() : null } */}
-          <div className={consts.addStyleClass(PRE, 'image-wrapper')}>
+          <div className={consts.addStyleClass(PRE, 'image-wrapper') + ((hov)?
+          ' hh-image-wrapper-hover':'')}>
             <div style={BG_IMG}></div>
           </div>
           {/*END IMAGE */}
