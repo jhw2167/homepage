@@ -11,10 +11,12 @@ import * as CSS from 'csstype';
 //Components
 import MainHeader from '../subcomponents/MainHeader';
 
-
 //misc
 import { useWindowSize } from '../subcomponents/misc/WindowDims';
 import { Link } from 'react-router-dom';
+
+//Data
+import moduleData from './Homepage/homepage-data.json';
 
 //Homepage constants
 const PRE = 'hh';
@@ -30,26 +32,58 @@ const SIZES = (width: number) => {
         return 'sm';
 }
 
-//Media Constants
-const BASE_IMG_PATH = "../homepage/";
-const BASE_IMG_TYPE = ".png";
+const CHAR_LIMIT = 11;
+
+const ASSETS_PATH = 'homepage/'
+const generateModules: Function = (setModuleHovered: Function) => {
+return moduleData.map( (v: c.ModuleData, i) => {
+    return {
+        title: v.title,
+        image: ASSETS_PATH + v.img,
+        index: i,
+        setModuleHovered: setModuleHovered,
+        //return a drop down option
+        options:  { 
+                charLimit: CHAR_LIMIT,
+                styleClass: PRE, 
+                data: v.options.data
+                }, //End DropDownProps
+        page_prefix: PRE
+}});
+}
+
+/* Function constants */
+const MODULE_ROWS = 2;
+const MODULE_COLS = 3;
+
+   //Convert Modules to grid
+const modulesToGrid = function(arr: Array<c.ModuleProps>): Array<Array<c.ModuleProps>> {
+    let grid: Array<Array<c.ModuleProps>> = new Array<any>();
+    for (let i = 0; i < MODULE_ROWS; i++) {
+        grid.push(new Array<c.ModuleProps>());
+        for (let j = 0; j < MODULE_COLS; j++) {
+            grid[i].push(arr[MODULE_COLS*i + j]);
+        }
+    } // END NESTED LOOP
+    return grid;
+}
 
 function Homepage() 
 {
     //const [windowDims, setWindowDims] = useState<c.Dims2D>(useWindowDimensions());
     let windowDims: c.Dims2D = useWindowSize();
     let headerProps = {q:"", a:""};
-   
 
     /*States */
     const [moduleHovered, setModuleHovered] = useState<number>(-1);
-    const [data, setData] = useState<c.ModuleData[]>([]);
 
     /* Effects */
     useEffect( () => {
-
+        
     }, [])
 
+    /* Generate Page Data */
+    const modules: c.ModuleProps[] = generateModules(setModuleHovered);
 
     const shadowedBox = document.getElementById(PRE+'-shadowed-box');
     useEffect( () => {
@@ -58,35 +92,6 @@ function Homepage()
         let innerStyle = (moduleHovered>-1) ? 'z-index: 10' : '';
         shadowedBox.setAttribute('style', innerStyle );
     }, [moduleHovered])
-
-    //Module Information
-    const MODULE_ROWS = 2;
-    const MODULE_COLS = 3;
-
-    const CHAR_LIMIT = 11;
-    const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
-        return {
-            title: t,
-            image: BASE_IMG_PATH + t.toLowerCase() + BASE_IMG_TYPE,
-            index: i,
-            setModuleHovered: setModuleHovered,
-            //return a drop down option
-            options:  {
-                  data: (!dropDowns[i]) ? [] : dropDowns[i].split(',').map( (v: string) => {
-                            return {
-                                text: v,
-                                url: api.FRONT_DOMAIN + v
-                            }
-                        }),
-                  charLimit: CHAR_LIMIT,
-                  styleClass: PRE
-                    }, //End DropDownProps
-            page_prefix: PRE
-    }});
-
-    
-
-    /* END MODULES */
 
     //RETURN 
     if(windowDims.w < c.MOBILE_WIDTH) 
@@ -109,7 +114,7 @@ function Homepage()
 
 
                     <div className={'row g-0 justify-content-center '+c.addStyleClass(PRE, 'body-row')}>
-                       {modulesTableJSX()}
+                       {modulesTableJSX(modules)}
                     </div>
                      {/* END BODY ROW */}
 
@@ -137,19 +142,7 @@ function Homepage()
 
   /* Page Modules */
 
-  //Convert Modules to grid
-  const modulesToGrid = function(arr: Array<c.ModuleProps>): Array<Array<c.ModuleProps>> {
-    let grid: Array<Array<c.ModuleProps>> = new Array<any>();
-    for (let i = 0; i < MODULE_ROWS; i++) {
-        grid.push(new Array<c.ModuleProps>());
-        for (let j = 0; j < MODULE_COLS; j++) {
-            grid[i].push(arr[MODULE_COLS*i + j]);
-        }
-    } // END NESTED LOOP
-    return grid;
-}
-
-const modulesTableJSX = () => {
+const modulesTableJSX = (modules: c.ModuleProps[]) => {
     return (
         <div className="hh-module-grid-wrapper container">
             {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {

@@ -1,7 +1,7 @@
 [
     {
         "title": "Projects",
-        "img": "./src/assets/homepage/projects.png",
+        "img": "projects.png",
         "options": {
             "data": [ {
                 "text": "Tracker",
@@ -13,7 +13,7 @@
 
     {
         "title": "Games",
-        "img": "./src/assets/homepage/games.png",
+        "img": "games.png",
         "options": {
             "data": [
             {
@@ -30,7 +30,7 @@
 
     {
         "title": "Music",
-        "img": "./src/assets/homepage/music.png",
+        "img": "music.png",
         "options": {
             "data": [
                 {
@@ -43,12 +43,12 @@
     
     {
         "title": "Photos",
-        "img": "./src/assets/homepage/photos.png",
+        "img": "photos.png",
         "options": {
             "data": [
                 {
                     "text": "View",
-                    "url": "jackhenrywelsh.com/photos"
+                    "url": "/photos"
                 }
             ]
         }
@@ -56,16 +56,16 @@
 
     {
         "title": "Documents",
-        "img": "./src/assets/homepage/documents.png",
+        "img": "documents.png",
         "options": {
             "data": [
                 {
                     "text": "Quotes",
-                    "url": "jackhenrywelsh.com/quotes"
+                    "url": "/quotes"
                 },
                 {
                     "text": "Questions",
-                    "url": "jackhenrywelsh.com/questions"
+                    "url": "/questions"
                 }
             ]
         }
@@ -73,12 +73,12 @@
 
     {
         "title": "Resume",
-        "img": "./src/assets/homepage/resume.png",
+        "img": "resume.png",
         "options": {
             "data": [
                 {
                     "text": "View",
-                    "url": "jackhenrywelsh.com/resume"
+                    "url": "/resume"
                 }
             ]
         }

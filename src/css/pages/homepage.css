@@ -177,7 +177,7 @@
 }
 
 .hh-image-wrapper-hover > div {
-    --hh-zoom: 1.2;
+    --hh-zoom: 1.3;
     transform:scale(var(--hh-zoom));
     -ms-transform:scale(var(--hh-zoom)); /* IE 9 */
     -moz-transform:scale(var(--hh-zoom)); /* Firefox */

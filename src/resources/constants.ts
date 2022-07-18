@@ -29,10 +29,14 @@ export interface LinkedText {
     url?: string;
 }
 
+export interface ModuleDataDDProps {
+    data: LinkedText[]
+}
+
 export interface ModuleData {
     title: string;
-    image: string;
-    options: DropDownProps;
+    img: string;
+    options: ModuleDataDDProps;
 }
 
 export interface ModuleProps {
