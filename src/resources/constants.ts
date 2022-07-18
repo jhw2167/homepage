@@ -29,6 +29,12 @@ export interface LinkedText {
     url?: string;
 }
 
+export interface ModuleData {
+    title: string;
+    image: string;
+    options: DropDownProps;
+}
+
 export interface ModuleProps {
     //size: Dims2D;
     title: string;

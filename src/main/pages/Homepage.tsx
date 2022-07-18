@@ -43,8 +43,14 @@ function Homepage()
 
     /*States */
     const [moduleHovered, setModuleHovered] = useState<number>(-1);
+    const [data, setData] = useState<c.ModuleData[]>([]);
 
     /* Effects */
+    useEffect( () => {
+
+    }, [])
+
+
     const shadowedBox = document.getElementById(PRE+'-shadowed-box');
     useEffect( () => {
         if(!shadowedBox) return;
@@ -56,9 +62,6 @@ function Homepage()
     //Module Information
     const MODULE_ROWS = 2;
     const MODULE_COLS = 3;
-
-    const titles = ['Projects', 'Games', 'Music', 'Photos', 'Documents', 'Resume'];
-    const dropDowns = ['Tracker', 'BO1 Zombies', 'Listen', '', 'Questions, Quotes, M1, M2', '']
 
     const CHAR_LIMIT = 11;
     const modules: Array<c.ModuleProps> = titles.map( (t, i) => {
@@ -81,30 +84,7 @@ function Homepage()
             page_prefix: PRE
     }});
 
-    //Convert Modules to grid
-    const modulesToGrid = function(arr: Array<c.ModuleProps>): Array<Array<c.ModuleProps>> {
-        let grid: Array<Array<c.ModuleProps>> = new Array<any>();
-        for (let i = 0; i < MODULE_ROWS; i++) {
-            grid.push(new Array<c.ModuleProps>());
-            for (let j = 0; j < MODULE_COLS; j++) {
-                grid[i].push(arr[MODULE_COLS*i + j]);
-            }
-        } // END NESTED LOOP
-        return grid;
-    }
-
-    const modulesTableJSX = () => {
-        return (
-            <div className="hh-module-grid-wrapper container">
-                {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
-                    return (<div className="row g-0">{ arr.map( (val: c.ModuleProps) => {
-                            return <div className="col g-0"><Module {...val}/></div>
-                    })}{/* END TCOL WRAPPER */}
-                    </div>);{/* END TR WRAPPER */}
-                })}
-            </div>
-        );
-    }
+    
 
     /* END MODULES */
 
@@ -154,3 +134,30 @@ function Homepage()
   
   export default Homepage;
   
+
+  /* Page Modules */
+
+  //Convert Modules to grid
+  const modulesToGrid = function(arr: Array<c.ModuleProps>): Array<Array<c.ModuleProps>> {
+    let grid: Array<Array<c.ModuleProps>> = new Array<any>();
+    for (let i = 0; i < MODULE_ROWS; i++) {
+        grid.push(new Array<c.ModuleProps>());
+        for (let j = 0; j < MODULE_COLS; j++) {
+            grid[i].push(arr[MODULE_COLS*i + j]);
+        }
+    } // END NESTED LOOP
+    return grid;
+}
+
+const modulesTableJSX = () => {
+    return (
+        <div className="hh-module-grid-wrapper container">
+            {modulesToGrid(modules).map( (arr: Array<c.ModuleProps>, i) => {
+                return (<div className="row g-0">{ arr.map( (val: c.ModuleProps) => {
+                        return <div className="col g-0"><Module {...val}/></div>
+                })}{/* END TCOL WRAPPER */}
+                </div>);{/* END TR WRAPPER */}
+            })}
+        </div>
+    );
+}

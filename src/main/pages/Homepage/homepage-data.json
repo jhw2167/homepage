@@ -1,0 +1,86 @@
+[
+    {
+        "title": "Projects",
+        "img": "./src/assets/homepage/projects.png",
+        "options": {
+            "data": [ {
+                "text": "Tracker",
+                "url": "https://github.com/jhw2167/TrackerApp-Frontend"
+                }
+            ]
+            }
+    },
+
+    {
+        "title": "Games",
+        "img": "./src/assets/homepage/games.png",
+        "options": {
+            "data": [
+            {
+                "text": "BO1 Zombies",
+                "url": "https://github.com/jhw2167/BO1-Reimagined-expanded"
+            },
+            {
+                "text": "ZSK",
+                "url": "https://github.com/jhw2167/ZSK"
+            }
+            ]
+        }
+    },
+
+    {
+        "title": "Music",
+        "img": "./src/assets/homepage/music.png",
+        "options": {
+            "data": [
+                {
+                    "text": "Listen",
+                    "url": "https://open.spotify.com/playlist/37i9dQZEVXcI63ylOqxdxw?si=c04622a5b63c4164"
+                }
+            ]
+        }
+    },
+    
+    {
+        "title": "Photos",
+        "img": "./src/assets/homepage/photos.png",
+        "options": {
+            "data": [
+                {
+                    "text": "View",
+                    "url": "jackhenrywelsh.com/photos"
+                }
+            ]
+        }
+    },
+
+    {
+        "title": "Documents",
+        "img": "./src/assets/homepage/documents.png",
+        "options": {
+            "data": [
+                {
+                    "text": "Quotes",
+                    "url": "jackhenrywelsh.com/quotes"
+                },
+                {
+                    "text": "Questions",
+                    "url": "jackhenrywelsh.com/questions"
+                }
+            ]
+        }
+    },
+
+    {
+        "title": "Resume",
+        "img": "./src/assets/homepage/resume.png",
+        "options": {
+            "data": [
+                {
+                    "text": "View",
+                    "url": "jackhenrywelsh.com/resume"
+                }
+            ]
+        }
+    }
+]
