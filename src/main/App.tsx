@@ -4,7 +4,8 @@ import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-ro
 
 //Project Imports
 import Homepage from './pages/Homepage';
-import NotFound from './pages/NotFound';  
+import NotFound from './pages/NotFound';
+import Resume from './pages/content/resume/resume';
 
 //Project CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,6 +31,7 @@ function App() {
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/resume" element={<Resume />} />
 
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound/>} />
