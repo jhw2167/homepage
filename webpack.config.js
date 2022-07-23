@@ -1,3 +1,6 @@
+//imports
+import css from ""
+
 const path = require('path');
 
 module.exports = {
@@ -5,13 +8,31 @@ module.exports = {
   
 
   module: { 
-    rules: [ 
+    rules: [
+
+      //babel
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+
+      //css
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+
+      //svg
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { 
-      exclude: ['/(node_modules)/', '/*/*.css', '/*/*.svg'],
-      test: /\.tsx?$/, 
-      loader: "ts-loader" 
-    }
+      { exclude: ['/(node_modules)/'], 
+      test: /\.tsx?$/,
+      loader: "ts-loader" }
   ]
 },
 

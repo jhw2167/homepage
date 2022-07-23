@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react-pdf": "^5.7.2",
-    "@types/underscore": "^1.11.4"
+    "@types/underscore": "^1.11.4",
+    "css-loader": "^6.7.1"
   }
 }
