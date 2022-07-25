@@ -19,6 +19,8 @@ import '../css/General.css';
   import '../css/pages/mobilehomepage.css';
   import '../css/pages/notfound.css';
   
+  //content pages
+  import '../main/pages/content/resume/resume.css'
 
   //Animations
   import '../css/animations.scss';

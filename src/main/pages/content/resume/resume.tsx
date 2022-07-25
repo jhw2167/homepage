@@ -11,22 +11,20 @@ function Resume() {
     <>
     <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
         <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
-            <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
+            <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
 
 
-                <div className={'row g-0 '+c.addStyleClass(PRE, 'resume-header-row')}>
-                <div className="row name-title-wrapper">
+                <div className={'row g-0 '+c.addStyleClass(PRE, 'header-row')}>
                   <h1 className="name-title"> JACK HENRY WELSH </h1>
-                </div>
                 </div> 
                  {/* END HEADER ROW */}
 
 
 
-                <div className={'row g-0 justify-content-center '+c.addStyleClass(PRE, 'body-row')}>
-                  <div className="resume-wrapper">
+                <div className={'row g-0 '+c.addStyleClass(PRE, 'body-row')}>
+                  <div className="resume-wrapper justify-content-center">
                   <Document file={res}>
-                    <Page pageNumber={1} />
+                    <Page className={"child-m-auto res-child-border"} pageNumber={1} />
                   </Document>
                   </div>
                 </div>

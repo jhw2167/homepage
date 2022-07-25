@@ -96,6 +96,10 @@ body {
     flex: 0 0 !important;
 }
 
+.child-m-auto > * {
+    margin: auto !important;
+}
+
 /*
     LIST OF Z-indices
 
