@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 
 //Data
 import moduleData from './Homepage/homepage-data.json';
+import Footer from '../narrowcomponents/Footer';
 
 //Homepage constants
 const PRE = 'hh';
@@ -118,8 +119,8 @@ function Homepage()
                     </div>
                      {/* END BODY ROW */}
 
-                    <div className={'row g-0 '+c.addStyleClass(PRE, 'footer-row')}>
-
+                    <div className={'row g-0 text-align-center '+c.addStyleClass(PRE, 'footer-row')}>
+                        <Footer />
                     </div>
                      {/* END FOOTER ROW */}
 

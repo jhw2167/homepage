@@ -7,6 +7,7 @@ import * as api from '../../resources/api';
 import MobileHomepage from './MobileHomepage';
 import Module from '../components/Module';
 import { JsxElement } from 'typescript';
+import Footer from '../narrowcomponents/Footer';
 
 //Interfaces
 interface MobileHomepageProps {
@@ -91,8 +92,8 @@ function Homepage(props: MobileHomepageProps)
 
           </div>
 
-          <div className={'row '+c.addStyleClass(PRE, 'mobile-footer-row')}>
-            
+          <div className={'row text-align-center '+c.addStyleClass(PRE, 'mobile-footer-row')}>
+            <Footer />
           </div>
           {/* END FOOTER ROW */}
 
