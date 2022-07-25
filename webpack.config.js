@@ -1,54 +1,81 @@
-//imports
-import css from ""
 
-const path = require('path');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+//const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-module.exports = {
-  entry: path.resolve(__dirname, 'src', './index.tsx'),
-  
+const settings = {
+    distPath: path.join(__dirname, "dist"),
+    srcPath: path.join(__dirname, "src")
+};
 
-  module: { 
-    rules: [
-
-      //babel
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-
-      //css
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-
-      //svg
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      },
-
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { exclude: ['/(node_modules)/'], 
-      test: /\.tsx?$/,
-      loader: "ts-loader" }
-  ]
-},
-
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-
-  resolve: {
-    extensions: ['.js', '.jsx', '.json','.ts', '.tsx'],
-    alias: {
-      Components: path.resolve(__dirname, 'src/main/components/'),
-      Assets: path.resolve(__dirname, 'src/assets/'),
-      Pages: path.resolve(__dirname, 'src/main/pages/'),
-      Resources: path.resolve(__dirname, 'src/resources/'),
-      CSS: path.resolve(__dirname, 'src/css/')
-    }
-  }
+function srcPathExtend(subpath) {
+    return path.join(settings.srcPath, subpath)
 }
+
+module.exports = (env, options) => {
+    const isDevMode = options.mode === "development";
+
+    return {
+        devtool: isDevMode ? "source-map" : false,
+        resolve: {
+            extensions: [".ts", ".tsx", ".js"],
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    use: ["babel-loader", "ts-loader", "tslint-loader"]
+                },
+                {
+                  test: /\.css$/i,
+                  use: ["style-loader", "css-loader"],
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        "style-loader",
+                        {
+                            loader: "css-loader",
+                            options: {
+                                sourceMap: isDevMode
+                            }
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                sourceMap: isDevMode
+                            }
+                        },
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                sourceMap: isDevMode
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.(ttf|eot|woff|woff2)$/,
+                    use: {
+                        loader: "file-loader",
+                        options: {
+                            name: "fonts/[name].[ext]",
+                        },
+                    },
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg|ico|pdf)$/i,
+                    use: [
+                        {
+                            loader: "file-loader",
+                            options: {
+                                outputPath: "assets/"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        plugins: [ new HtmlWebpackPlugin() ]
+    };
+};
