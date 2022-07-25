@@ -1,18 +1,28 @@
 /* Styling for resume page component */
 
 .res-header-row {
-    margin-top: 8%;
+    margin-top: 10%;
     font-size: 1.2em;
 }
 
 .res-body-row {
-    margin-top: 10%;
-    overflow: scroll;
-    max-height: 70vh;
+    margin-top: 5%;
+    height: 70vh;
+
+    border-bottom: 4px solid white;
+}
+
+.resume-wrapper {
+    max-height: 68vh;
+    overflow-y: scroll;
+}
+
+.resume-wrapper::-webkit-scrollbar {
+    background-color: transparent;
 }
 
 .res-child-border > canvas {
     border: 4px solid black;
     border-radius: 15px;
-    zoom: 120%;
 }
+
