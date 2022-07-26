@@ -1,6 +1,6 @@
 //React Imports
 import React from 'react';
-import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-router-dom";
+import { Route, Routes,  Navigate, useSearchParams, BrowserRouter} from "react-router-dom";
 
 //Project Imports
 import Homepage from './pages/Homepage';
@@ -36,7 +36,7 @@ function App() {
           <Route path="/resume" element={<Resume />} />
 
           <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={ <Navigate to="/404" /> } />
     </Routes>
     </BrowserRouter>    
   );
