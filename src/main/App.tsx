@@ -3,6 +3,8 @@ import React from 'react';
 import { Route, Routes,  Navigate, useSearchParams, BrowserRouter} from "react-router-dom";
 
 //Project Imports
+import OGPHead from '../misc/react-ogp';
+
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
 import Resume from './pages/content/resume/resume';
@@ -24,12 +26,15 @@ import '../css/General.css';
 
   //Animations
   import '../css/animations.scss';
+
   
 
 
 
 function App() {
   return (
+    <>
+    <OGPHead />
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<Homepage />} />
@@ -39,6 +44,7 @@ function App() {
           <Route path="*" element={ <Navigate to="/404" /> } />
     </Routes>
     </BrowserRouter>    
+    </>
   );
 }
 
