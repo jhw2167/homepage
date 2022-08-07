@@ -6,7 +6,7 @@ export default function OGPHead() {
   return (
     <>
       <Head>
-      <title>Modified Title</title>
+      <title>JackHenryWelsh.com</title>
       <meta name="description" content="A Personal Website" />
       <link rel="apple-touch-icon" href="/logo512.png" />
         <OGP
