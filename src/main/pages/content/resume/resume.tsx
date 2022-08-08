@@ -2,13 +2,21 @@ import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import * as c from '../../../../resources/constants';
 import Footer from '../../../narrowcomponents/Footer';
 import Header from '../../../narrowcomponents/Header';
+import { useWindowSize } from '../../../subcomponents/misc/WindowDims';
+import MobileResume from './MobileResume';
 
 import res from './resume.pdf';
 
 const PRE='res';
 function Resume() {
-  return (
+  let windowDims: c.Dims2D = useWindowSize();
 
+  if(windowDims.w < c.MOBILE_WIDTH) 
+            return <MobileResume />;
+    else {
+
+    
+  return (
     <>
     <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
         <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
@@ -23,7 +31,7 @@ function Resume() {
 
 
                 <div className={'row g-0 '+c.addStyleClass(PRE, 'body-row')}>
-                  <div className="resume-wrapper justify-content-center">
+                  <div className={"resume-wrapper justify-content-center " + PRE}>
                   <Document file={res}>
                     <Page className={"child-m-auto res-child-border"} pageNumber={1} />
                   </Document>
@@ -43,6 +51,7 @@ function Resume() {
     </div> 
     </>
   );
+  }
 }
 
 export default Resume;

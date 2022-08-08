@@ -3,10 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 //Project Imports
 import * as c from '../../resources/constants';
-import * as api from '../../resources/api';
-import MobileHomepage from './MobileHomepage';
 import Module from '../components/Module';
-import { JsxElement } from 'typescript';
 import Footer from '../narrowcomponents/Footer';
 
 //Interfaces

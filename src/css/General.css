@@ -20,6 +20,10 @@
     --check-green: rgb(11, 211, 11);
 
     --subtitle-font:  'Calibri', 'Trebuchet MS', 'sans-serif';
+
+    --mobile-lg: 720px; /* CSS vars cannot be used in media query definitions yet */
+    --mobile-md: 580px;
+    --mobile-sm: 450px;
 }
 
 /* Index Styling */
@@ -42,10 +46,17 @@ body {
     color: var(--prim-font-col);
     height: fit-content;
     min-height: 100vh;
+    align-items: center;
+    text-align: center;
 }
 
 .container-fluid > .row {
     width: 100%;
+}
+
+.container-fluid > * {
+    align-items: center;
+    text-align: center;
 }
 
 /* header footer div */
@@ -55,8 +66,9 @@ body {
 }
 
 .small-header-row {
-    margin-top: 1%;
+    margin-top: 2%;
     border-bottom: 3px var(--secondary-col) solid;
+    width: 100% !important;
 }
 
 .small-header-col {
@@ -69,6 +81,16 @@ body {
     text-decoration: none;
     padding-left: 20px;
 }
+
+    @media only screen and (max-width: 720px) {
+        .small-header-row {
+            margin-top: 4%;
+        }
+        .small-header-col {
+            font-size: .4em;
+            text-align: center;
+        }
+    }
 
 /* END HEADER SPECS */
 
