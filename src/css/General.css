@@ -48,6 +48,10 @@ body {
     min-height: 100vh;
 }
 
+.container-fluid > .row {
+    width: 100%;
+}
+
 /* header footer div */
 .header-row {
     margin-top: 3%;

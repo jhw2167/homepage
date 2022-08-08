@@ -27,16 +27,17 @@
     background-color: transparent;
 }
 
+.res.download-wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .res-child-border > canvas {
     border: 4px solid black;
     border-radius: 15px;
 }
 
 /* Mobile Styling */
-
-.container-fluid.mob-res > .row {
-    width: 100%;
-}
 
 .container-fluid.mob-res > * {
     align-items: center;

@@ -39,6 +39,10 @@ function Resume() {
                 </div>
                  {/* END BODY ROW */}
 
+                 <div className={"row download-wrapper " + PRE}>
+                  <a href="/pages/resume/resume.pdf" download="JackHenryWelshResume" className={"download "+PRE}>Download</a>
+                </div>
+
                 <div className={'row g-0 text-align-center '+c.addStyleClass(PRE, 'footer-row')}>
                     <Footer />
                 </div>
