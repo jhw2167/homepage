@@ -34,20 +34,35 @@
 
 /* Mobile Styling */
 
+.container-fluid.mob-res > .row {
+    width: 100%;
+}
+
+.container-fluid.mob-res > * {
+    align-items: center;
+    text-align: center;
+}
+
+
 .mob-res.body {
-    margin-top: 12%;
+    margin-top: 5%;
     margin-bottom: 15%;
 }
 
 .mob-res.body > .col > * {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.mob-res.text {
+    margin-top: 5%;
+    font-size: 1.2em;
+}
 
 .download-wrapper {
     max-width: fit-content;
 
-    margin-top: 0% !important;
+    margin-top: 10px;
     border: 3px solid var(--secondary-col);
     border-radius: 10px;
 }
@@ -64,3 +79,7 @@
     .download:visited {
         color: inherit;
     }
+
+.resume-wrapper.mob-res {
+    margin-top: 10%;
+}

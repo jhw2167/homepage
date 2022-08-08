@@ -7,18 +7,18 @@ const PRE=' mob-res';
 function MobileResume() {
   return (
     <>
-    <div className="container-fluid mobile h-100 d-flex flex-column">
+    <div className={"container-fluid mobile h-100 d-flex flex-column " + PRE}>
         <div className="d-flex flex-column vh-100">
           <Header />
 
           <div className={"row g-0 body h-100" + PRE}>
               <div className="col d-flex flex-column">
-                <div className="row">
+                <div className={"row text"+PRE}>
                   Mobile Support for PDF viewing is spotty. Please
                   download if you have difficulties viewing.
                 </div>
                 <div className={"row download-wrapper" + PRE}>
-                  <a href="/pages/resume/resume.pdf" className={"download "+PRE}>Download</a>
+                  <a href="/pages/resume/resume.pdf" download="JackHenryWelshResume" className={"download "+PRE}>Download</a>
                 </div>
                 <div className={"row resume-wrapper" + PRE}>
                   <img src="/pages/resume/resume.png" alt="Resume png" className="resume-img" />
