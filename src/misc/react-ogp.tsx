@@ -7,8 +7,14 @@ export default function OGPHead() {
     <>
       <Head>
       <title>JackHenryWelsh.com</title>
-      <meta name="description" content="A Personal Website" />
-      <link rel="apple-touch-icon" href="/logo512.png" />
+      </Head>
+      <Head>
+      <meta name="description" content="My Website"/>
+      </Head>
+      <Head>
+        <link rel="apple-touch-icon" href="/logo512.png" />
+      </Head>
+      <Head>
         <OGP
           url="https://jackhenrywelsh.com"
           title="JackHenryWelsh.com"
