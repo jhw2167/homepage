@@ -1,5 +1,7 @@
 //React Imports
 import React, { useEffect, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+
 
 //Project Imports
 import * as c from '../../resources/constants';
@@ -23,6 +25,11 @@ function Homepage(props: MobileHomepageProps)
     const [increment, incrementModules] = useState<number>(0);
     const [slideAnim, setSlideAnim] = useState<string>('');
     const modules = props.modules;
+
+    const swipeHandlers = useSwipeable({
+      onSwipedRight: () => incrementModules(-1), //takes param eventData
+      onSwipedLeft: () => incrementModules(1)
+    });
 
     //Effects
     useEffect( () => {
@@ -58,7 +65,7 @@ function Homepage(props: MobileHomepageProps)
               <div className="arrow-left"></div>
             </div>
 
-            <div className={c.addStyleClass(PRE, 'carousel')}> 
+            <div className={c.addStyleClass(PRE, 'carousel')} {...swipeHandlers}> 
                 {modules.map( (m,i) => {
                   const before=(moduleIdx-1<0)?modules.length-1:moduleIdx-1,
                    after=(moduleIdx+1)%modules.length, selected=moduleIdx;
