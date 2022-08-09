@@ -27,7 +27,10 @@ export interface Dims2D {
 export interface LinkedText {
     text: string;
     url?: string;
+    openIn?: number;
 }
+    export const REDIRECT=0;    //constants for openIn
+    export const NEW_TAB=1;
 
 export interface ModuleDataDDProps {
     data: LinkedText[]

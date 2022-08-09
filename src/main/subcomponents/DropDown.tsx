@@ -160,9 +160,12 @@ function DropDown(props: DropDownProps ) {
                         
                         return <tr className= {c.addStyleClass(props.styleClass, 'dd-row')
                         + ' ' + hovRowStyleClass + ' ' + rowStyleClassFunc(index)} 
-                        onClickCapture={ () => { window.location.href= (value.url) ?
-                            value.url :  window.location.href }}
+                        onClickCapture={ () => {  
+                            if(value.url && value?.openIn==c.REDIRECT)
+                             window.location.href=value.url }}
                         onClick={() => {
+                            if(value.url && value?.openIn==c.NEW_TAB)
+                                 window.open(value.url, "_blank"); //Open link in new tab
                             parentAfterClick(value.text);
                             setDropDownPlace(index)}}
                         key={index}

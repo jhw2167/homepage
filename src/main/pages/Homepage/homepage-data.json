@@ -5,7 +5,8 @@
         "options": {
             "data": [ {
                 "text": "Tracker",
-                "url": "https://github.com/jhw2167/TrackerApp-Frontend"
+                "url": "https://github.com/jhw2167/TrackerApp-Frontend",
+                "openIn": 1
                 }
             ]
             }
@@ -18,11 +19,13 @@
             "data": [
             {
                 "text": "BO1 Zombies",
-                "url": "https://github.com/jhw2167/BO1-Reimagined-expanded"
+                "url": "https://github.com/jhw2167/BO1-Reimagined-expanded",
+                "openIn": 1
             },
             {
                 "text": "ZSK",
-                "url": "https://github.com/jhw2167/ZSK"
+                "url": "https://github.com/jhw2167/ZSK",
+                "openIn": 1
             }
             ]
         }
@@ -35,7 +38,8 @@
             "data": [
                 {
                     "text": "Listen",
-                    "url": "https://open.spotify.com/playlist/126QUGAO1xHs9d6WE7u2e8?si=f7a7d5f7053f4dd9"
+                    "url": "https://open.spotify.com/playlist/126QUGAO1xHs9d6WE7u2e8?si=f7a7d5f7053f4dd9",
+                    "openIn": 1
                 }
             ]
         }
@@ -48,7 +52,8 @@
             "data": [
                 {
                     "text": "View",
-                    "url": "/photos"
+                    "url": "/photos",
+                    "openIn": 0
                 }
             ]
         }
@@ -61,11 +66,13 @@
             "data": [
                 {
                     "text": "Quotes",
-                    "url": "/quotes"
+                    "url": "/quotes",
+                    "openIn": 0
                 },
                 {
                     "text": "Questions",
-                    "url": "/questions"
+                    "url": "/questions",
+                    "openIn": 0
                 }
             ]
         }
@@ -78,7 +85,8 @@
             "data": [
                 {
                     "text": "View",
-                    "url": "/resume"
+                    "url": "/resume",
+                    "openIn": 0
                 }
             ]
         }
