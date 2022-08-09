@@ -5,8 +5,8 @@ import arrayShuffle from "array-shuffle";
 import React from "react";
 
 //Imgs
-const Q = "Love is delicate; but at the same time it is most vital and strong. The tiny, tender wave of love rocks the boat of life";
-const A = "Marv Ellis, Contact";
+const Q = "The challenge of leadership is to: be strong, but not rude; be kind, but not weak; be bold, but not bully; be thoughtful, but not lazy; be humble, but not timid; be proud, but not arrogant; have humor but without folly";
+const A = "Sigmund Freud";
 
 interface HeaderQuote {
     q?: string,
