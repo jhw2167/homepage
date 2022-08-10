@@ -6,11 +6,13 @@ import axios, { AxiosPromise, AxiosRequestConfig } from 'axios';
 export const CONST_VAR = "CONSTANT VARS GO HERE";
 export const DOMAIN = "http://localhost";
 export const PORT = ":8080/";
+export const DEV_PORT = ":3000/";
 export const FRONT_DOMAIN = DOMAIN + PORT;
+export const DEV_DOMAIN = DOMAIN + DEV_PORT;
 
 //Resources
 export const SERVER_PHOTO_GALLERY = DOMAIN + "/photos";
-export const SERVER_PHOTO_DATA = DOMAIN + "/photos";
+export const LOCAL_PHOTO_GALLERY = DEV_DOMAIN + "pages/photos";
 
 //Server calls
 export const SERVER_ALL_TRANSACTIONS = DOMAIN + PORT + "transactions";
