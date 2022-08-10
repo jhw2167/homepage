@@ -8,6 +8,10 @@ export const DOMAIN = "http://localhost";
 export const PORT = ":8080/";
 export const FRONT_DOMAIN = DOMAIN + PORT;
 
+//Resources
+export const SERVER_PHOTO_GALLERY = DOMAIN + "/photos";
+export const SERVER_PHOTO_DATA = DOMAIN + "/photos";
+
 //Server calls
 export const SERVER_ALL_TRANSACTIONS = DOMAIN + PORT + "transactions";
 export const SERVER_ALL_CATEGORIES = SERVER_ALL_TRANSACTIONS + "/categories";
