@@ -79,6 +79,24 @@ export interface DDHtmlStructure {
     td?: string;
 }
 
+
+export interface PhotoData { 
+    dateTime: string; 
+    description: string; 
+    details: {
+         aperture: string;
+         exposure: string; 
+         focalLength: string; 
+         lens: string; 
+         make: string; 
+         model: string; 
+         shutterSpeed: string;
+         }; 
+    filename: string; 
+    location: string; 
+    resolution: string; 
+    title: string; 
+}
 /* # # # # # */
 
 //Data Structure Constants

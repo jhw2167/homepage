@@ -52,17 +52,16 @@ function Photos() {
   let windowDims: c.Dims2D = useWindowSize();
 
   //states
-  const [photoData, setPhotoData] = useState<string[]>([]);
+  const [photoData, setPhotoData] = useState<c.PhotoData[]>(photoJson);
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
 
   //Effects
   useEffect( ()=> {
     //Fetch photos
     //api.getRequest(api.SERVER_PHOTO_GALLERY, ) //only for production
-    setPhotoData(photoJson);  //only for dev
-    setGalleryPhotos(photoData.map( (v) => {
-      const [h, w] = PH_SIZE(arrayShuffle(PH_OPTIONS)[0]);
-      return {height:h, width: w, src: api.LOCAL_PHOTO_GALLERY+"/"+v};
+    setGalleryPhotos(arrayShuffle(photoData).map( (v: c.PhotoData) => {
+      const [w, h] = v.resolution.split("x");
+      return {height:Number(h), width: Number(w), src: api.LOCAL_PHOTO_GALLERY+"/"+v.filename};
     }))
 
   }, [])
