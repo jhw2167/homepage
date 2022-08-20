@@ -268,6 +268,15 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
 /* FUNCTION CONSTANTS */
 export const avg = (arr: Array<number>) => { return arr.reduce((a, b) => a + b) / arr.length };
 
+export const normVect = (vect: number[], norm: number[]) => {
+    let [mVect, mNorm] = [1, 1];
+    vect.reduce((prev, curr) => {return curr*=prev}, mVect);
+    norm.reduce((prev, curr) => {return curr*=prev}, mNorm);
+    mVect = Math.sqrt(mVect); mNorm = Math.sqrt(mNorm)
+    const NORM = (dim: number) => {return (dim/mVect)*mNorm};
+    return vect.map((v) => NORM(v));
+}
+
 /* FILE IO */
 export const checkLocalFile = (uri: string, def: string): string => {
     console.log(uri);

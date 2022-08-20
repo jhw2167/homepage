@@ -4,4 +4,22 @@
      overflow-y: hidden;
      max-width: 95%;
      margin: auto;
+     margin-top: 2%;
+}
+
+/* Photo and wrapper styling */
+.ph.photo-wrapper {
+     cursor: pointer;
+     overflow: hidden;
+     position: relative;
+}
+
+     .ph.photo-wrapper:hover {
+          scale: 1.05;
+          z-index: 10;
+          transition: scale .6s;
+     }
+
+.ph.photo {
+     border: 2px solid var(--secondary-col);
 }

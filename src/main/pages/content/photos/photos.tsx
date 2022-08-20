@@ -1,6 +1,6 @@
 
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 
 //Project Imports
@@ -13,7 +13,7 @@ import MobilePhotos from './MobilePhotos';
 
 //Data
 import photoJson from './photo_data.json';
-import Gallery from 'react-photo-masonry';
+import Gallery, { RenderImageProps } from 'react-photo-masonry';
 import arrayShuffle from 'array-shuffle';
 
 
@@ -26,28 +26,23 @@ interface GalleryPhoto {
   alt?: string | undefined;
   key?: string | undefined;
 }
+//JSX
 
-const PH_OPTIONS = ['sm', 'md', 'lg', 'tall', 'wide'];
-const PH_SIZE = (sz: string) => {
-  switch(sz) {
-    case 'sm':
-      return [1, 1];
-    case 'md':
-      return [1, 1];
-    case 'lg':
-       return [2, 2];
-    case 'tall':
-        return [5, 4];
-    case 'wide':
-        return [4, 5];
-  }
-  //default
-  return [2, 2];
-}
-
+const imageRenderer =
+  ({ index, left, top, margin, photo}: RenderImageProps) => (
+    <div key={index} className={PRE+"photo-wrapper"}
+    style={{ margin, height: photo.height, width: photo.width}}
+    >
+      <img src={photo.src} alt="" className={PRE+"photo"} 
+      style={{height: photo.height, width: photo.width}}
+      />
+    </div>
+  );
+//Constants
 const GALLERY_DIRECTION = "row";
+const PRE='ph ';
+const PHOTO_MARGIN=8;
 
-const PRE='ph';
 function Photos() {
   let windowDims: c.Dims2D = useWindowSize();
 
@@ -60,8 +55,9 @@ function Photos() {
     //Fetch photos
     //api.getRequest(api.SERVER_PHOTO_GALLERY, ) //only for production
     setGalleryPhotos(arrayShuffle(photoData).map( (v: c.PhotoData) => {
-      const [w, h] = v.resolution.split("x");
-      return {height:Number(h), width: Number(w), src: api.LOCAL_PHOTO_GALLERY+"/"+v.filename};
+      const [h, w] = c.normVect(v.resolution.split("x").map((v) => Number(v)), [300,300]);
+      console.log("title: %s, h: %s, w: %s", v.title, h, w);
+      return {height:h, width: w, src: api.LOCAL_PHOTO_GALLERY+"/"+v.filename};
     }))
 
   }, [])
@@ -86,6 +82,8 @@ function Photos() {
                 <div className="ph body row">
                  <Gallery photos={galleryPhotos}
                  direction={GALLERY_DIRECTION}
+                 margin={PHOTO_MARGIN}
+                 renderImage={imageRenderer}
                  ></Gallery>
                 </div>
 
