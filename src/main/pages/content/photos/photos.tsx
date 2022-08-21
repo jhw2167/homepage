@@ -160,7 +160,6 @@ function Photos() {
 
                 <div className={PRE+"body row"} 
                 onClick={()=> console.log(isComponentVisible)}>
-
                 { (selectedPhoto) ? 
                 <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}
                 >
