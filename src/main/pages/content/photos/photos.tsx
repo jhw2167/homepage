@@ -106,6 +106,7 @@ function Photos() {
       return toGalleryPhoto(v, (p: GalleryPhoto) => setSelectedPhoto(p));
     }))
 
+
   }, [])
 
   useEffect( () => {
@@ -150,7 +151,7 @@ function Photos() {
   return (
     <>
     <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
-    <div id={'shadowed-box'} className={PRE}> </div>
+    <div id={'shadowed-box'} style={{zIndex:"-1"}} className={PRE}> </div>
         <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
             <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
             <Header />
