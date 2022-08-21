@@ -8,6 +8,7 @@ import OGPHead from '../misc/react-ogp';
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
 import Resume from './pages/content/resume/resume';
+import Photos from './pages/content/photos/photos';
 
 //Project CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,9 +24,11 @@ import '../css/General.css';
   
   //content pages
   import '../main/pages/content/resume/resume.css'
+  import '../main/pages/content/photos/photos.css'
 
   //Animations
   import '../css/animations.scss';
+
 
   
 
@@ -39,6 +42,7 @@ function App() {
     <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/photos" element={<Photos />} />
 
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={ <Navigate to="/404" /> } />

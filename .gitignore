@@ -10,6 +10,7 @@
 
 # production
 /build
+/public/pages
 
 #Excess
 photos/*
@@ -29,5 +30,6 @@ yarn-error.log*
 *.png
 *.jpg
 *.jpeg
-*.sh
 node_modules
+*.sh
+*.exe
