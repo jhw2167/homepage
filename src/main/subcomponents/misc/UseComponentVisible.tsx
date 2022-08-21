@@ -11,7 +11,6 @@ export default function useComponentVisible(initialIsVisible: boolean) {
 
     const handleClickOutside = (event: MouseEvent) => {
         if (ref.current && !ref.current.contains(event.target)) {
-            console.log("click Outside");
             setIsComponentVisible(false);
         }
     };

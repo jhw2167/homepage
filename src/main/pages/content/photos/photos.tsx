@@ -10,16 +10,14 @@ import Footer from '../../../narrowcomponents/Footer';
 import Header from '../../../narrowcomponents/Header';
 import { useWindowSize } from '../../../subcomponents/misc/WindowDims';
 import MobilePhotos from './MobilePhotos';
+import Gallery, { PhotoProps, RenderImageProps } from 'react-photo-masonry';
+import arrayShuffle from 'array-shuffle';
+import ArrowWrap from '../../../components/ArrowWrap';
+import useComponentVisible from '../../../subcomponents/misc/UseComponentVisible';
 
 //Data
 import photoJson from './photo_data.json';
-import Gallery, { PhotoProps, RenderImageProps } from 'react-photo-masonry';
-import arrayShuffle from 'array-shuffle';
-import { stringify } from 'querystring';
-import { JsxElement } from 'typescript';
-import ArrowWrap from '../../../components/ArrowWrap';
-import useComponentVisible from '../../../subcomponents/misc/UseComponentVisible';
-import { all } from 'underscore';
+
 
 //Interfaces
 interface GalleryPhoto {
@@ -143,7 +141,6 @@ function Photos() {
         setIsComponentVisible(false);
       }
       shadowedBox.setAttribute('style', innerStyle );
-      console.log("selected: " + selectedPhoto);
   }, [selectedPhoto])
 
   if(windowDims.w < 0) 
@@ -158,8 +155,7 @@ function Photos() {
             <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
             <Header />
 
-                <div className={PRE+"body row"} 
-                onClick={()=> console.log(isComponentVisible)}>
+                <div className={PRE+"body row"}>
                 { (selectedPhoto) ? 
                 <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}
                 >
