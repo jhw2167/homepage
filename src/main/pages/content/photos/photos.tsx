@@ -100,14 +100,22 @@ function Photos() {
 
   }, [])
 
+  const shadowedBox = document.getElementById('shadowed-box');
+  useEffect( () => {
+      if(!shadowedBox) return;
+
+      let innerStyle = (selectedPhoto) ? 'z-index: 10' : '';
+      shadowedBox.setAttribute('style', innerStyle );
+  }, [selectedPhoto])
+
   if(windowDims.w < 0) 
             return <MobilePhotos />;
     else {
 
-    
   return (
     <>
     <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
+    <div id={'shadowed-box'} className={PRE}> </div>
         <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
             <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
             <Header />
