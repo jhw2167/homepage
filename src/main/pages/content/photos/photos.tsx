@@ -42,7 +42,7 @@ const imageRenderer = ( v: RenderImageProps): JSX.Element => (
     onClick={(e) => (v.onClick) ? v.onClick(e, {index: v.index, ...v.photo}) : null}
     >
       <img src={v.photo.src} alt="" className={PRE+"photo"} 
-      style={hwFromSizes(undefined, [v.photo.height, v.photo.width])}
+      style={{height: v.photo.height, width: v.photo.width}}
       />
     </div>
   );
