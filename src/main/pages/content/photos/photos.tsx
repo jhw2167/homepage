@@ -18,6 +18,8 @@ import arrayShuffle from 'array-shuffle';
 import { stringify } from 'querystring';
 import { JsxElement } from 'typescript';
 import ArrowWrap from '../../../components/ArrowWrap';
+import useComponentVisible from '../../../subcomponents/misc/UseComponentVisible';
+import { all } from 'underscore';
 
 //Interfaces
 interface GalleryPhoto {
@@ -78,6 +80,7 @@ const imageRenderer = ( v: RenderImageProps): JSX.Element => (
       };
   }
 
+
 //Constants
 const GALLERY_DIRECTION = "row";
 const PRE='ph ';
@@ -94,6 +97,9 @@ function Photos() {
   const [galleryIdx, setGalleryIdx] = useState<number>(0);
   const [increment, incrementPhoto] = useState<number>(0);
 
+  const { ref, isComponentVisible, setIsComponentVisible
+  } = useComponentVisible(false);
+
   //Effects
   useEffect( ()=> {
     //Fetch photos
@@ -103,6 +109,12 @@ function Photos() {
     }))
 
   }, [])
+
+  useEffect( () => {
+    if(!isComponentVisible)
+      setSelectedPhoto(undefined);
+  }, [isComponentVisible])
+
 
   useEffect( () => {
     console.log("inc: " + increment);
@@ -122,8 +134,16 @@ function Photos() {
   useEffect( () => {
       if(!shadowedBox) return;
 
-      let innerStyle = (selectedPhoto) ? 'z-index: 10' : '';
+      let innerStyle = 'z-index: -1';
+      if(selectedPhoto) {
+        setIsComponentVisible(true);
+        innerStyle = 'z-index: 10';
+        setGalleryIdx(galleryPhotos.findIndex((v) => {return v.src==selectedPhoto.src}))
+      } else {
+        setIsComponentVisible(false);
+      }
       shadowedBox.setAttribute('style', innerStyle );
+      console.log("selected: " + selectedPhoto);
   }, [selectedPhoto])
 
   if(windowDims.w < 0) 
@@ -138,29 +158,31 @@ function Photos() {
             <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
             <Header />
 
-                <div className={PRE+"body row"}>
+                <div className={PRE+"body row"} 
+                onClick={()=> console.log(isComponentVisible)}>
 
                 { (selectedPhoto) ? 
                 <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}
-                onClick={(e)=>setSelectedPhoto(undefined)}
                 >
-                  <div className={PRE+"theater wrapper row align-middle"}>
+                  <div 
+                  className={PRE+"theater wrapper row align-middle"}>
                   <ArrowWrap styleClass={PRE} arrowType={'char'} arrowUpdate={incrementPhoto}>
                   <div className={PRE+"theater col"}>
-                    <img src={selectedPhoto.src} className={PRE+"photo"}/>
+                    <img ref={ref} src={selectedPhoto.src} className={PRE+"photo"}/>
                   </div>
                   </ArrowWrap>
                   </div>
                </div> : null
                 }
                 
+                <div style={{pointerEvents: (isComponentVisible) ? "none"  : "all"}}>
                  <Gallery photos={galleryPhotos}
                  direction={GALLERY_DIRECTION}
                  margin={PHOTO_MARGIN}
                  renderImage={imageRenderer}
                  onClick={ (e, p) => { setSelectedPhoto(p.photo) }}
                  ></Gallery>
-
+                 </div>
                 </div>
 
 
