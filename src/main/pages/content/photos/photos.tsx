@@ -15,8 +15,10 @@ import MobilePhotos from './MobilePhotos';
 import photoJson from './photo_data.json';
 import Gallery, { RenderImageProps } from 'react-photo-masonry';
 import arrayShuffle from 'array-shuffle';
+import { stringify } from 'querystring';
+import { JsxElement } from 'typescript';
 
-
+//Interfaces
 interface GalleryPhoto {
   src: string;
   srcSet?: string | string[] | undefined;
@@ -26,38 +28,70 @@ interface GalleryPhoto {
   alt?: string | undefined;
   key?: string | undefined;
 }
+
+
+
 //JSX
 
-const imageRenderer =
-  ({ index, left, top, margin, photo}: RenderImageProps) => (
-    <div key={index} className={PRE+"photo-wrapper"}
-    style={{ margin, height: photo.height, width: photo.width}}
+const imageRenderer = ( v: RenderImageProps): JSX.Element => (
+    <div key={v. index} className={PRE+"photo-wrapper"}
+    style={{ left: v.left, top: v.top, margin: v.margin}}
     >
-      <img src={photo.src} alt="" className={PRE+"photo"} 
-      style={{height: photo.height, width: photo.width}}
+      <img src={v.photo.src} alt="" className={PRE+"photo"} 
+      style={hwFromSizes(undefined, [v.photo.height, v.photo.width])}
       />
     </div>
   );
+
+  //Functions
+  const hwFromSizes = (sizes: string | undefined | string[], vect: number[]) => {
+    if(!sizes)
+      return {heigth: vect[0], width: vect[1]};
+    let w1 = Number(sizes);
+    let h1 = (w1/vect[1])*vect[0];
+    return {heigth: h1, width: w1};
+  }
+    
+  const preImageRender = (p: GalleryPhoto): RenderImageProps => {
+    return {index: 0,
+      photo: p,
+      margin: "0",
+      onClick: null,
+      onMouseEnter: null,
+      onMouseLeave: null,
+      direction: 'column'
+    };
+  };
+
+  const toTheaterPhoto = (selected: string, data: c.PhotoData[], hydrateFunc: (v: GalleryPhoto) => RenderImageProps ): JSX.Element => {
+    return imageRenderer( hydrateFunc(  toGalleryPhoto( data.filter((v) => {return v.filename==selected})[0] ) ) )
+  }
+
+  const toGalleryPhoto = (p: c.PhotoData) => {
+    const [h, w] = c.normVect(p.resolution.split("x").map((v) => Number(v)), NORM_SIZE);
+      //console.log("h: %s, w: %s", h, w);
+      return {height:h, width: w, sizes:String(w), src: api.LOCAL_PHOTO_GALLERY+"/"+p.filename};
+  }
+
 //Constants
 const GALLERY_DIRECTION = "row";
 const PRE='ph ';
-const PHOTO_MARGIN=8;
-
+const PHOTO_MARGIN=6;
+const NORM_SIZE = [300, 300]
 function Photos() {
   let windowDims: c.Dims2D = useWindowSize();
 
   //states
   const [photoData, setPhotoData] = useState<c.PhotoData[]>(photoJson);
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
+  const [selectedPhoto, setSelectedPhoto] = useState<string>("");
 
   //Effects
   useEffect( ()=> {
     //Fetch photos
     //api.getRequest(api.SERVER_PHOTO_GALLERY, ) //only for production
     setGalleryPhotos(arrayShuffle(photoData).map( (v: c.PhotoData) => {
-      const [h, w] = c.normVect(v.resolution.split("x").map((v) => Number(v)), [300,300]);
-      console.log("title: %s, h: %s, w: %s", v.title, h, w);
-      return {height:h, width: w, src: api.LOCAL_PHOTO_GALLERY+"/"+v.filename};
+      return toGalleryPhoto(v);
     }))
 
   }, [])
@@ -74,17 +108,18 @@ function Photos() {
             <div className={'col g-0 text-align-center '+c.addStyleClass(PRE, 'center-col')}>
             <Header />
 
-                {/* <div className={'row g-0 '+c.addStyleClass(PRE, 'header-row')}>
-                  <h1 className="name-title"> JACK HENRY WELSH </h1>
-                </div>  */}
-                 {/* END HEADER ROW */}
+                <div className={PRE+"body row"}>
 
-                <div className="ph body row">
+                <div className={PRE+"theater-photo"}>
+                    { (selectedPhoto) ? toTheaterPhoto(selectedPhoto, photoJson, preImageRender) : null }
+                 </div>
+
                  <Gallery photos={galleryPhotos}
                  direction={GALLERY_DIRECTION}
                  margin={PHOTO_MARGIN}
                  renderImage={imageRenderer}
                  ></Gallery>
+
                 </div>
 
 

@@ -23,3 +23,11 @@
 .ph.photo {
      border: 2px solid var(--secondary-col);
 }
+
+
+/* Theater Photo */
+.ph.theater-photo {
+     position: relative;
+     height: 100%;
+     width: 100%;
+}

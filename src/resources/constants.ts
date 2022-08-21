@@ -209,9 +209,9 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
         //Get Iso month and year
         let temp = -1;
         mn = mn ? mn?.toLocaleLowerCase() : "";
-        if(!mn || ( (MNTHS.indexOf(mn)==-1) && (MNTHS.indexOf(mn)==-1) ) ) {
+        if(!mn || ( (MNTHS.indexOf(mn)===-1) && (MNTHS.indexOf(mn)===-1) ) ) {
             temp = (new Date(Date.now())).getMonth()+1;
-        } else if (mn?.length == 3) {
+        } else if (mn?.length === 3) {
             temp = MNTHS.indexOf(mn)+1;
         } else {
             temp = MONTHS.indexOf(mn)+1;
@@ -222,8 +222,8 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
         //console.log("M: %d : %s, y: %s : %s", month, mn, year, yr)
         //return dates
         let start: any = new Date(year + "-" + month + "-01");
-        let end: any = new Date(( (month == 11) ? year+1 : year) + "-"
-         + ((month == 11) ? "1" : month+1) + "-01");
+        let end: any = new Date(( (month === 11) ? year+1 : year) + "-"
+         + ((month === 11) ? "1" : month+1) + "-01");
 
         return [start, end];
     }
@@ -246,7 +246,7 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
     }
 
     //to 'Title Case'
-    function toTitles(s: string){ return s.replace(/\w\S*/g, function(t) { return t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(); }); }
+    //function toTitles(s: string){ return s.replace(/\w\S*/g, function(t) { return t.charAt(0).toUpperCase() + t.substring(1).toLowerCase(); }); }
 
 
     export const addStyleClass = function(styleClass: string, type: string): string {
@@ -260,9 +260,9 @@ export const MNTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul","aug", "se
     }
 
     export const formatISODate = function(date: Date | number): string {
-        if(date==NaN) return 'NaN Passed';
-        return new Date((new Date(date)).toLocaleString('en-US', { timeZone: 'America/Chicago' }).
-        split(",")[0]).toISOString().split('T')[0];
+        if(isNaN(date as number)) return 'NaN Passed';
+        return new Date((new Date(date)).toLocaleString('en-US', { timeZone: 'America/Chicago' })
+        .split(",")[0]).toISOString().split('T')[0];
     }
 
 /* FUNCTION CONSTANTS */
@@ -270,10 +270,13 @@ export const avg = (arr: Array<number>) => { return arr.reduce((a, b) => a + b) 
 
 export const normVect = (vect: number[], norm: number[]) => {
     let [mVect, mNorm] = [1, 1];
-    vect.reduce((prev, curr) => {return curr*=prev}, mVect);
-    norm.reduce((prev, curr) => {return curr*=prev}, mNorm);
+    mVect = vect.reduce((prev, curr) => {return curr*prev}, mVect);
+    mNorm = norm.reduce((prev, curr) => {return curr*prev}, mNorm);
+
     mVect = Math.sqrt(mVect); mNorm = Math.sqrt(mNorm)
+
     const NORM = (dim: number) => {return (dim/mVect)*mNorm};
+    //console.log("NORM h: %s, w: %s", vect[0], NORM(vect[0]));
     return vect.map((v) => NORM(v));
 }
 
@@ -286,5 +289,4 @@ export const checkLocalFile = (uri: string, def: string): string => {
            console.log(err)
         return def;
        }
-       return uri;
 }
