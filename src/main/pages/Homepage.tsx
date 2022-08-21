@@ -86,7 +86,7 @@ function Homepage()
     /* Generate Page Data */
     const modules: c.ModuleProps[] = generateModules(setModuleHovered);
 
-    const shadowedBox = document.getElementById(PRE+'-shadowed-box');
+    const shadowedBox = document.getElementById('shadowed-box');
     useEffect( () => {
         if(!shadowedBox) return;
 
@@ -102,7 +102,7 @@ function Homepage()
     return (
         <>
         <div className="container-fluid hh-container d-flex flex-column g-0 align-items-center">
-        <div id={PRE+'-shadowed-box'}> </div>
+        <div id={'shadowed-box'}></div>
             <div className={"row g-0 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
 

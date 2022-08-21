@@ -5,6 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 
 //Project Imports
 import * as c from '../../resources/constants';
+import ArrowWrap from '../components/ArrowWrap';
 import Module from '../components/Module';
 import Footer from '../narrowcomponents/Footer';
 
@@ -60,11 +61,8 @@ function Homepage(props: MobileHomepageProps)
         
         {/* MOBILE BODY */}
           <div className={"row g-0 " +c.addStyleClass(PRE, 'mobile-body')}>
-            <div className='hh-mobile-arrow arrow-btn-left'
-             onClick={() => incrementModules(-1)}>
-              <div className="arrow-left"></div>
-            </div>
-
+            
+            <ArrowWrap styleClass={PRE} arrowUpdate={incrementModules} >
             <div className={c.addStyleClass(PRE, 'carousel')} {...swipeHandlers}> 
                 {modules.map( (m,i) => {
                   const before=(moduleIdx-1<0)?modules.length-1:moduleIdx-1,
@@ -87,12 +85,7 @@ function Homepage(props: MobileHomepageProps)
                   return <div className={styleClass}><Module {...m}/></div>;
                 })}
             </div>
-
-            <div className='hh-mobile-arrow arrow-btn-right'
-            onClick={() => incrementModules(1)}
-            >
-              <div className="arrow-right"></div>
-            </div>
+            </ArrowWrap>
 
           </div>
 

@@ -17,6 +17,7 @@ import Gallery, { PhotoProps, RenderImageProps } from 'react-photo-masonry';
 import arrayShuffle from 'array-shuffle';
 import { stringify } from 'querystring';
 import { JsxElement } from 'typescript';
+import ArrowWrap from '../../../components/ArrowWrap';
 
 //Interfaces
 interface GalleryPhoto {
@@ -90,6 +91,9 @@ function Photos() {
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoProps>();
 
+  const [galleryIdx, setGalleryIdx] = useState<number>(0);
+  const [increment, incrementPhoto] = useState<number>(0);
+
   //Effects
   useEffect( ()=> {
     //Fetch photos
@@ -99,6 +103,20 @@ function Photos() {
     }))
 
   }, [])
+
+  useEffect( () => {
+    console.log("inc: " + increment);
+    if(increment==0)
+      return;
+
+    let i = galleryIdx + increment;
+    if(i>-1 && i<galleryPhotos.length) {
+      setGalleryIdx(i);
+      setSelectedPhoto(galleryPhotos[i])
+    }
+
+    incrementPhoto(0);
+  }, [increment])
 
   const shadowedBox = document.getElementById('shadowed-box');
   useEffect( () => {
@@ -123,17 +141,15 @@ function Photos() {
                 <div className={PRE+"body row"}>
 
                 { (selectedPhoto) ? 
-                <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}>
+                <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}
+                onClick={(e)=>setSelectedPhoto(undefined)}
+                >
                   <div className={PRE+"theater wrapper row align-middle"}>
-                  <div className={PRE+"col-1 arrow left"}>{'<'}</div>
-
+                  <ArrowWrap styleClass={PRE} arrowType={'char'} arrowUpdate={incrementPhoto}>
                   <div className={PRE+"theater col"}>
-                    <img src={selectedPhoto.src} className={PRE+"photo"}
-                    
-                     />
+                    <img src={selectedPhoto.src} className={PRE+"photo"}/>
                   </div>
-
-                  <div className={PRE+"col-1 arrow right"}>{'>'}</div>
+                  </ArrowWrap>
                   </div>
                </div> : null
                 }
