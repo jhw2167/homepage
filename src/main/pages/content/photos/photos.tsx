@@ -13,7 +13,7 @@ import MobilePhotos from './MobilePhotos';
 
 //Data
 import photoJson from './photo_data.json';
-import Gallery, { RenderImageProps } from 'react-photo-masonry';
+import Gallery, { PhotoProps, RenderImageProps } from 'react-photo-masonry';
 import arrayShuffle from 'array-shuffle';
 import { stringify } from 'querystring';
 import { JsxElement } from 'typescript';
@@ -34,8 +34,9 @@ interface GalleryPhoto {
 //JSX
 
 const imageRenderer = ( v: RenderImageProps): JSX.Element => (
-    <div key={v. index} className={PRE+"photo-wrapper"}
+    <div key={v.index} className={PRE+"photo-wrapper"}
     style={{ left: v.left, top: v.top, margin: v.margin}}
+    onClick={(e) => (v.onClick) ? v.onClick(e, {index: v.index, ...v.photo}) : null}
     >
       <img src={v.photo.src} alt="" className={PRE+"photo"} 
       style={hwFromSizes(undefined, [v.photo.height, v.photo.width])}
@@ -52,7 +53,7 @@ const imageRenderer = ( v: RenderImageProps): JSX.Element => (
     return {heigth: h1, width: w1};
   }
     
-  const preImageRender = (p: GalleryPhoto): RenderImageProps => {
+  const preImageRender = (p: PhotoProps): RenderImageProps => {
     return {index: 0,
       photo: p,
       margin: "0",
@@ -63,14 +64,17 @@ const imageRenderer = ( v: RenderImageProps): JSX.Element => (
     };
   };
 
-  const toTheaterPhoto = (selected: string, data: c.PhotoData[], hydrateFunc: (v: GalleryPhoto) => RenderImageProps ): JSX.Element => {
-    return imageRenderer( hydrateFunc(  toGalleryPhoto( data.filter((v) => {return v.filename==selected})[0] ) ) )
+  const toTheaterPhoto = (p: PhotoProps, hydrateFunc: (v: PhotoProps) => RenderImageProps ): JSX.Element => {
+    return imageRenderer( hydrateFunc( p ) )
   }
 
-  const toGalleryPhoto = (p: c.PhotoData) => {
+  const toGalleryPhoto = (p: c.PhotoData, onClick?: Function) => {
     const [h, w] = c.normVect(p.resolution.split("x").map((v) => Number(v)), NORM_SIZE);
       //console.log("h: %s, w: %s", h, w);
-      return {height:h, width: w, sizes:String(w), src: api.LOCAL_PHOTO_GALLERY+"/"+p.filename};
+      return {height:h, width: w,
+        sizes:String(w),
+        src: api.LOCAL_PHOTO_GALLERY+"/"+p.filename
+      };
   }
 
 //Constants
@@ -84,14 +88,14 @@ function Photos() {
   //states
   const [photoData, setPhotoData] = useState<c.PhotoData[]>(photoJson);
   const [galleryPhotos, setGalleryPhotos] = useState<GalleryPhoto[]>([]);
-  const [selectedPhoto, setSelectedPhoto] = useState<string>("");
+  const [selectedPhoto, setSelectedPhoto] = useState<PhotoProps>();
 
   //Effects
   useEffect( ()=> {
     //Fetch photos
     //api.getRequest(api.SERVER_PHOTO_GALLERY, ) //only for production
     setGalleryPhotos(arrayShuffle(photoData).map( (v: c.PhotoData) => {
-      return toGalleryPhoto(v);
+      return toGalleryPhoto(v, (p: GalleryPhoto) => setSelectedPhoto(p));
     }))
 
   }, [])
@@ -110,14 +114,27 @@ function Photos() {
 
                 <div className={PRE+"body row"}>
 
-                <div className={PRE+"theater-photo"}>
-                    { (selectedPhoto) ? toTheaterPhoto(selectedPhoto, photoJson, preImageRender) : null }
-                 </div>
+                { (selectedPhoto) ? 
+                <div className={PRE+"container-fluid theater d-flex flex-column g-0 align-items-center"}>
+                  <div className={PRE+"theater wrapper row align-middle"}>
+                  <div className={PRE+"col-1 arrow left"}>{'<'}</div>
 
+                  <div className={PRE+"theater col"}>
+                    <img src={selectedPhoto.src} className={PRE+"photo"}
+                    
+                     />
+                  </div>
+
+                  <div className={PRE+"col-1 arrow right"}>{'>'}</div>
+                  </div>
+               </div> : null
+                }
+                
                  <Gallery photos={galleryPhotos}
                  direction={GALLERY_DIRECTION}
                  margin={PHOTO_MARGIN}
                  renderImage={imageRenderer}
+                 onClick={ (e, p) => { setSelectedPhoto(p.photo) }}
                  ></Gallery>
 
                 </div>
