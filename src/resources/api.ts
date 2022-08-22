@@ -4,14 +4,15 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from 'axios';
 
 export const CONST_VAR = "CONSTANT VARS GO HERE";
-export const DOMAIN = "http://localhost";
-export const PORT = ":8080/";
+export const DOMAIN = "http://jackhenrywelsh.com";
+export const PORT = "/";
 export const DEV_PORT = ":3000/";
 export const FRONT_DOMAIN = DOMAIN + PORT;
 export const DEV_DOMAIN = DOMAIN + DEV_PORT;
 
 //Resources
-export const SERVER_PHOTO_GALLERY = DOMAIN + "/photos";
+export const SERVER_PHOTO_GALLERY = DOMAIN + "/pages/photos";
+export const PHOTO_GALLERY = SERVER_PHOTO_GALLERY;
 export const LOCAL_PHOTO_GALLERY = DEV_DOMAIN + "pages/photos";
 
 //Server calls

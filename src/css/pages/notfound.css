@@ -1,6 +1,6 @@
 /* Styling for simple 404 error page */
 
-.nf-container > .row {
+.nf-outer-row {
     margin: auto;
     margin-top: 10%;
 }

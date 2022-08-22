@@ -5,6 +5,7 @@ import { Route, Routes, Navigate, useSearchParams, BrowserRouter} from "react-ro
 //imports
 import * as c from '../../resources/constants';
 import { Typewriter, useTypewriter, Cursor } from 'react-simple-typewriter'
+import Header from "../narrowcomponents/Header";
 
 const PRE='nf'
 
@@ -30,6 +31,7 @@ function NotFound() {
 
   return (
     <div className="container-fluid nf-container d-flex flex-column g-0 align-items-center">
+      <Header />
          <div className={"row g-0 align-self-center h-100 " +c.addStyleClass(PRE, 'outer-row')}>
                 <div className={'col g-0 '+c.addStyleClass(PRE, 'center-col')}>
                     <div className={PRE+'-title'}>404</div>

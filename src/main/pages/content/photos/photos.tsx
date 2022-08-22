@@ -74,7 +74,7 @@ const imageRenderer = ( v: RenderImageProps): JSX.Element => (
       //console.log("h: %s, w: %s", h, w);
       return {height:h, width: w,
         sizes:String(w),
-        src: api.LOCAL_PHOTO_GALLERY+"/"+p.filename
+        src: api.PHOTO_GALLERY+"/"+p.filename
       };
   }
 
