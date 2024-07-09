@@ -5,8 +5,8 @@ import arrayShuffle from "array-shuffle";
 import React from "react";
 
 //Imgs
-const Q = "The challenge of leadership is to: be strong, but not rude; be kind, but not weak; be bold, but not bully; be thoughtful, but not lazy; be humble, but not timid; be proud, but not arrogant; have humor but without folly";
-const A = "Sigmund Freud";
+const Q = "Man, despite his artistic pretensions, his sophistication, and his many accomplishments - owes the fact of his existence to a six-inch layer of topsoil and the fact that it rains.";
+const A = "Paul Harvey";
 
 interface HeaderQuote {
     q?: string,

@@ -164,6 +164,8 @@ function DropDown(props: DropDownProps ) {
                             if(value.url && value?.openIn==c.REDIRECT)
                              window.location.href=value.url }}
                         onClick={() => {
+							if(value.url && value?.openIn==c.NEW_PAGE)
+                                 window.open(value.url, "_self"); //Open link in new tab
                             if(value.url && value?.openIn==c.NEW_TAB)
                                  window.open(value.url, "_blank"); //Open link in new tab
                             parentAfterClick(value.text);

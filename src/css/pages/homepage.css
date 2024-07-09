@@ -1,8 +1,13 @@
-/* Styling for major components on homepage of app */
+/* 
+Styling for major components on homepage of app 
+
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto+Slab:wght@400;600&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-    --hh-title-font: 'Special Elite', cursive;
+    --hh-title-font: 'Karla';
 }
 
 /* Page Structure */
@@ -62,7 +67,7 @@
 
 .name-title, .nf-title { /* same styling for 404 Not Found page */
     /* font-family: 'Roboto Slab', serif; */
-    font-family: 'Special Elite', cursive;
+    font-family: var(--hh-title-font);
     font-size: 4em;
     letter-spacing: 0.1em;
 

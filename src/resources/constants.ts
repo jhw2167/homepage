@@ -31,6 +31,7 @@ export interface LinkedText {
 }
     export const REDIRECT=0;    //constants for openIn
     export const NEW_TAB=1;
+	export const NEW_PAGE=2;
 
 export interface ModuleDataDDProps {
     data: LinkedText[]

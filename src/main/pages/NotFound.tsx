@@ -9,8 +9,8 @@ import Header from "../narrowcomponents/Header";
 
 const PRE='nf'
 
-const INTERVAL =  16000;
-const TYPEWRITER_DELAY = 7000;
+const INTERVAL =  8000;
+const TYPEWRITER_DELAY = 4000;
 const BASE_TYPE_SPEED = 100;
 
 const DESCR = ["Couldn't find that page :/", "Working on it!"];

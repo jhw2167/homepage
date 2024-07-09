@@ -21,6 +21,7 @@
     "react-ogp": "0.0.3",
     "react-pdf": "^5.7.2",
     "react-photo-masonry": "^8.0.0",
+    "react-router": "^6.24.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-simple-typewriter": "^3.0.1",
@@ -32,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "client-s3-deploy": "aws s3 sync build/ s3://01-homepage",
+    "client-s3-deploy": "npm run build && aws s3 sync build/ s3://01-homepage --delete",
     "client-cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E3TLWB2Y0AYEPZ  --paths /* ",
     "client-deploy": "npm run build && npm run client-s3-deploy && npm run client-cloudfront-invalidation",
     "test": "react-scripts test",
@@ -59,6 +60,7 @@
   "devDependencies": {
     "@types/react-pdf": "^5.7.2",
     "@types/underscore": "^1.11.4",
-    "css-loader": "^6.7.1"
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "2.4.5"
   }
 }

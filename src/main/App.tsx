@@ -1,6 +1,6 @@
 //React Imports
 import React from 'react';
-import { Route, Routes,  Navigate, useSearchParams, BrowserRouter} from "react-router-dom";
+import { Route, Routes,  Navigate, useSearchParams, BrowserRouter, HashRouter } from "react-router-dom";
 
 //Project Imports
 import OGPHead from '../misc/react-ogp';
@@ -29,11 +29,6 @@ import '../css/General.css';
   //Animations
   import '../css/animations.scss';
 
-
-  
-
-
-
 function App() {
   return (
     <>
@@ -41,15 +36,16 @@ function App() {
     <BrowserRouter>
     <Routes>
           <Route path="/" element={<Homepage />} />
+		  <Route path="/home" element={<Homepage />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/photos" element={<Photos />} />
 
           <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={ <Navigate to="/404" /> } />
+		  <Route path="*" element={ <Navigate to="/404" /> } />
     </Routes>
     </BrowserRouter>    
     </>
   );
 }
-
+//  <Route path="/finances" element={ <Navigate  to="http://jackhenrywelsh.com/finances" /> } />
 export default App;

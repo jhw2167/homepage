@@ -59,20 +59,19 @@ body {
 }
 
 .small-header-row {
-    margin-top: 2%;
+    margin-top: 1%;
     border-bottom: 3px var(--secondary-col) solid;
     width: 100% !important;
 }
 
 .small-header-col {
     font-size: .6em;
-    text-align: left;
+    text-align: center;
+    cursor: pointer;
 }
 
-.small-header-col > a {
-    color: inherit;
-    text-decoration: none;
-    padding-left: 20px;
+.svg-home {
+    margin-bottom: 10%;
 }
 
     @media only screen and (max-width: 720px) {
